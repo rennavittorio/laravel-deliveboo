@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
+
+            $table->string('name');
+            $table->string('img');
+            $table->text('description');
+            $table->double('price', 5, 2);
+            $table->boolean('is_visible');
+
             $table->timestamps();
         });
     }
