@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             //Francesco che testa i branch
-            //Secondo test dei branch
+
+            //modifica commento per conflitto
+
+            //test-branch-vittorio
             $table->string('name', 100);
             $table->string('img', 255)->default('https://picsum.photos/200');
             $table->string('slug', 255)->unique();
