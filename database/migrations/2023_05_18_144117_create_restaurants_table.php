@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('img', 255)->default('https://picsum.photos/200');
             $table->string('slug', 255)->unique();
             $table->string('address', 255);
-            $table->string('vat', 11)->unique();
+            $table->string('vat', 13)->unique();
 
             $table->timestamps();
         });

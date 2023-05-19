@@ -21,5 +21,6 @@ class UserSeeder extends Seeder
         $newUser->email = "team1@gmail.com"; //email
         $newUser->password = Hash::make("team1team1"); //password
         $newUser->save(); //invio i dati dal database
+
     }
 }
