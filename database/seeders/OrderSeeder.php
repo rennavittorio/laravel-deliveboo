@@ -14,7 +14,7 @@ class OrderSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
         //Ciclo
         for ($i = 0; $i < 5; $i++) {
