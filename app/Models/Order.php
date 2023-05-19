@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'total',
+        'status',
+        'first_name',
+        'last_name',
+        'email',
+        'phone',
+        'address',
+        'postal_code'
+    ];
+
+    public function dishes()
+    {
+        return $this->belongsToMany(Dish::class);
+    }
 }

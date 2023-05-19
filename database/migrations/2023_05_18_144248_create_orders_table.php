@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('email', 255);
             $table->string('phone', 20);
             $table->string('address', 255);
-            $table->string('posta_code', 5);
+            $table->string('postal_code', 5);
 
             $table->timestamps();
         });
