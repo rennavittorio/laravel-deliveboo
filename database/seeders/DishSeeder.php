@@ -18,6 +18,7 @@ class DishSeeder extends Seeder
     public function run(Faker $faker)
     {   
         $restaurant_ids = Restaurant::all()->pluck("id")->all(); //id dei ristoranti
+        $order_ids = Restaurant::all()->pluck("id")->all(); //id dei ristoranti
         //Ciclo
         for ($i = 0; $i < 50; $i++) {
             $newDish = new Dish(); //nuovo piatto
@@ -28,6 +29,7 @@ class DishSeeder extends Seeder
             $newDish->is_visible = $faker->numberBetween(0, 1); //visibilità
             $newDish->restaurant_id = $faker->randomElement($restaurant_ids); //id del ristorante
             $newDish->save(); //invio i dati al database
+            $newDish->orders()->attach($faker->randomElements($order_ids, 2)); //inserisco i dati nella tabella ponte
         }
     }
 }
