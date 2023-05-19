@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
         //Seeder
         $this->call([
             UserSeeder::class, //seeder gli utenti
-            RestaurantSeeder::class, //seeder dei ristoranti
-            CategorySeeder::class, //seeder delle categorie
+            RestaurantSeeder::class, //seeder dei restaurants
+            CategorySeeder::class, //seeder delle categories
             DishSeeder::class, //seeder dei piatti
             OrderSeeder::class, //seeder degli ordini
         ]);
