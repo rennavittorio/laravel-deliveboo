@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Restaurant;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -23,7 +24,9 @@ class RestaurantSeeder extends Seeder
 
         $category_ids = Category::all()->pluck('id')->all();
 
-        for($i = 0; $i < 50; $i++ ) {
+        $user_ids = User::all()->pluck('id')->all();
+
+        for ($i = 0; $i < 5; $i++) {
 
             $restaurant = new Restaurant();
 
