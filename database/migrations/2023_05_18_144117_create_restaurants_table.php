@@ -20,6 +20,8 @@ return new class extends Migration
             //modifica commento per conflitto
 
             //test-branch-vittorio
+
+            //test lapo1
             $table->string('name', 100);
             $table->string('img', 255)->default('https://picsum.photos/200');
             $table->string('slug', 255)->unique();
