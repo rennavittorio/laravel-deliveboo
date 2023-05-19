@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Faker\Generator as Faker;
 
 class UserSeeder extends Seeder
 {
@@ -14,13 +15,20 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        $newUser = new User(); //utente
-        $newUser->name = "team1"; //nome
-        $newUser->email = "team1@gmail.com"; //email
-        $newUser->password = Hash::make("team1team1"); //password
-        $newUser->save(); //invio i dati dal database
+
+        for($i = 0; $i < 50; $i++ ) {
+
+            $newUser = new User(); //utente
+            $newUser->name = $faker->name(); //nome
+            $newUser->email = "team1@gmail.com"; //email
+            $newUser->password = Hash::make("team1team1"); //password
+            $newUser->save(); //invio i dati dal database
+        }
+
+
+        
 
     }
 }
