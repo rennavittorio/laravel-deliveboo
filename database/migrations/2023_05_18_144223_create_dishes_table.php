@@ -14,15 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('dishes', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('name');
-            $table->string('img');
-            $table->text('description');
-            $table->double('price', 5, 2);
-            $table->boolean('is_visible');
-
-            $table->timestamps();
+            $table->id(); //id
+            $table->string('name'); //nome
+            $table->string('img'); //immagine
+            $table->text('description'); //descrizione
+            $table->double('price', 5, 2); //prezzo
+            $table->boolean('is_visible'); //visibilità
+            $table->timestamps(); //data di creazione e di modifica
         });
     }
 

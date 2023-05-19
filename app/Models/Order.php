@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-
+    //Mass assignment
     protected $fillable = [
         'total',
         'status',
@@ -19,7 +19,7 @@ class Order extends Model
         'address',
         'postal_code'
     ];
-
+    //Relazione molti a molti
     public function dishes()
     {
         return $this->belongsToMany(Dish::class);
