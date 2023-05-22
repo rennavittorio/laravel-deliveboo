@@ -3,24 +3,18 @@
 @section('content')
 <div class="container">
     <h2 class="fs-4 text-secondary my-4">
-        {{ __('Dashboard') }}
+        Ciao, benevenuto {{ Auth::user()->name }}
     </h2>
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">{{ __('User Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+    
+    <div class="d-flex flex-column gap-3">
+        <div class="col p-2 text-white rounded-2 bg-primary">
+            <a href="{{ route('dishes.index')}}" class="text-white">Vai ai tuoi piatti</a> 
+        </div>
+        <div class="col p-2 text-white rounded-2 bg-primary">
+            Vai ai tuoi ordini
         </div>
     </div>
+
+
 </div>
 @endsection
