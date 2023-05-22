@@ -7,6 +7,24 @@ a {
     color: currentColor;
 }
 
+//layout
+.navbar {
+    background-color: #FF6D00;
+}
+
+.welcome .card {
+    width: 300px;
+    height: 200px;
+    font-size: 2rem;
+    background-color: #FF6D00;
+    color: white;
+
+    &:hover {
+        background-color: #FF8500;
+        color: #5A189A;
+    }
+}
+
 //index-page
 .grid {
     display: grid;
