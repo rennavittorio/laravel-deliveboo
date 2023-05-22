@@ -20,7 +20,7 @@ class DishController extends Controller
     {
         $user = Auth::user();
 
-        $dishes = Dish::where('restaurant_id', $user->id)->get(); //controlliamo scarico dishes solo per user registrato
+        $dishes = Dish::where('restaurant_id', $user->id)->orderBy('updated_at', 'desc')->get(); //controlliamo scarico dishes solo per user registrato
         return view('dishes.index', compact('dishes', 'user')); //restituisco la vista index
     }
 
@@ -90,8 +90,14 @@ class DishController extends Controller
     public function update(UpdateDishRequest $request, Dish $dish)
     {
         $data = $request->validated(); //valido i dati inseriti
-        $dish::update($data); //aggiorno i dati del piatto
-        return to_route('dishes.index', $dish); //torno alla rotta index
+
+        if ($request->hasFile('img')) {
+            $cover_path = Storage::put('uploads', $data['img']);
+            $data['img'] = $cover_path; //riempiamo il campo che abbiamo già
+        };
+
+        $dish->update($data); //aggiorno i dati del piatto
+        return to_route('dishes.index'); //torno alla rotta index
     }
 
     /**
