@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
+use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
@@ -16,7 +17,8 @@ class DishController extends Controller
     public function index()
     {
         $dishes = Dish::all(); //prendo tutti i piatti dal database
-        return view('dishes.index', compact('dishes')); //restituisco la vista index
+        $user = Auth::user();
+        return view('dishes.index', compact('dishes', 'user')); //restituisco la vista index
     }
 
     /**
@@ -26,7 +28,8 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view('dishes.create'); //restituisco la vista create
+        $user = Auth::user();
+        return view('dishes.create', compact('user'));
     }
 
     /**
@@ -39,7 +42,7 @@ class DishController extends Controller
     {
         $data = $request->validated(); //valido i dati inseriti
         $newDish = Dish::create($data); //creo un nuovo piatto
-        return to_route('dishes.show', $newDish); //restituisco la rotta show
+        return to_route('dishes.index'); //torno alla rotta index
     }
 
     /**
@@ -50,7 +53,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        return view('dishes.show', compact('dish')); //restituisco la vista show
+        return view('dishes.show', compact('dish')); //restituisco la vista show (non utilizzata per ora)
     }
 
     /**
@@ -61,7 +64,8 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view('dishes.edit', compact('dish')); //restituisco la vista edit
+        $user = Auth::user();
+        return view('dishes.edit', compact('user', 'dish'));
     }
 
     /**
@@ -75,7 +79,7 @@ class DishController extends Controller
     {
         $data = $request->validated(); //valido i dati inseriti
         $dish::update($data); //aggiorno i dati del piatto
-        return to_route('dishes.show', $dish); //restituisco la rotta show
+        return to_route('dishes.index', $dish); //torno alla rotta index
     }
 
     /**
@@ -87,6 +91,6 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         $dish->delete(); //elimino il piatto
-        return to_route('dishes.index'); //restituisco la rotta index
+        return to_route('dishes.index'); //torno alla rotta index
     }
 }
