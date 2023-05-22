@@ -40,7 +40,9 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
+        $user = Auth::user();
         $data = $request->validated(); //valido i dati inseriti
+        $data['restaurant_id'] = $user->id;
         $newDish = Dish::create($data); //creo un nuovo piatto
         return to_route('dishes.index'); //torno alla rotta index
     }
