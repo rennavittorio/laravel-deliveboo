@@ -21,9 +21,7 @@ class CategorySeeder extends Seeder
         foreach($categories as $category_name) {
 
             $new_category = new category();
-
             $new_category->name = $category_name;
-
             $new_category->save();
         }
     }
