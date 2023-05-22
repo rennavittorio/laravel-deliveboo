@@ -2,10 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dish;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Order; //model
+use App\Models\Restaurant;
 use Faker\Generator as Faker; //faker
+use Illuminate\Support\Facades\DB;
 
 class OrderSeeder extends Seeder
 {
@@ -16,18 +19,45 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        //Ciclo
-        for ($i = 0; $i < 5; $i++) {
-            $newOrder = new Order(); //ordine
-            $newOrder->date = $faker->dateTime(); //data
-            $newOrder->status = $faker->numberBetween(0, 1); //stato
-            $newOrder->first_name = $faker->firstName(); //nome del cliente
-            $newOrder->last_name = $faker->lastName(); //cognome del cliente
-            $newOrder->email = $faker->email(); //email del cliente
-            $newOrder->phone = $faker->randomNumber(9, true); //telefono del cliente
-            $newOrder->address = $faker->sentence(3); //indirizzo del cliente
-            $newOrder->postal_code = $faker->randomNumber(5, true); //codice postale del cliente
-            $newOrder->save(); //salvo i dati nel database
+
+        //ATTENTION HERE
+        $restaurant_ids = Restaurant::all()->pluck("id")->all();
+        //we need to controll restaurant_id, because
+        //one order has link with many dishes from only one, specific restaurant
+
+        foreach ($restaurant_ids as $id) {
+            //implement a foreach($rest_ids as $rest), each restaurant has it's own orders and related dishes
+            //foreach restaurant, we need to create a for cicle of N orders
+
+            $dish_ids = Dish::where('restaurant_id', $id)->pluck('id')->all();
+            //we need to recal only the restaurant_id related dishes
+
+            for ($i = 0; $i < rand(1, 3); $i++) {
+                //we create 2 order for each restaurant_id
+                $newOrder = new Order();
+
+                $newOrder->total = $faker->randomFloat(2, 5, 100); //decimals, min, max
+                $newOrder->status = $faker->numberBetween(0, 1); //payment status
+                $newOrder->first_name = $faker->firstName();
+                $newOrder->last_name = $faker->lastName();
+                $newOrder->email = $faker->email();
+                $newOrder->phone = $faker->randomNumber(9, true);
+                $newOrder->address = $faker->sentence(3);
+                $newOrder->postal_code = $faker->randomNumber(5, true);
+
+                $newOrder->save();
+
+                for ($j = 0; $j < rand(1, 3); $j++) { //ATTENZIONE: usare diverse var per ciclo for innestato
+                    //we attach 2 dishes to order, related to each rest
+                    // $newOrder->dishes()->attach($faker->randomElement($dish_ids));
+                    DB::table('dish_order')->insert([
+                        //we use DB:: facades to insert also related quantity
+                        'dish_id' => $faker->randomElement($dish_ids),
+                        'order_id' => $newOrder->id,
+                        'quantity' => rand(1, 3),
+                    ]);
+                }
+            }
         }
     }
 }

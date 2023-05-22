@@ -23,11 +23,15 @@ class DatabaseSeeder extends Seeder
 
         //Seeder
         $this->call([
-            UserSeeder::class, //seeder gli utenti
-            RestaurantSeeder::class, //seeder dei restaurants
-            CategorySeeder::class, //seeder delle categories
-            DishSeeder::class, //seeder dei piatti
-            OrderSeeder::class, //seeder degli ordini
+
+            UserSeeder::class,
+            CategorySeeder::class,
+            //first users and categs, rest need both
+            RestaurantSeeder::class,
+
+            DishSeeder::class,
+            OrderSeeder::class,
+            //order after dish, in order we seed the pivot table
         ]);
     }
 }

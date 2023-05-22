@@ -26,18 +26,21 @@ class RestaurantSeeder extends Seeder
 
         $user_ids = User::all()->pluck('id')->all();
 
-        for ($i = 0; $i < 5; $i++) {
+        foreach ($user_ids as $key => $user) {
 
             $restaurant = new Restaurant();
 
-            $restaurant->name = $faker->name();
+            $restaurant->name = 'pizza' . ($key + 1);
             $restaurant->img = $picsum_img;
             $restaurant->address = $faker->address();
-            $restaurant->slug = Str::slug($restaurant->name . $restaurant->address);
+            $restaurant->slug = Str::slug($restaurant->name . '-' . $restaurant->address);
             $restaurant->vat =  $faker->bothify('#######-###-#');
-            $restaurant->user_id = 1;
+            $restaurant->user_id = $user;
 
             $restaurant->save();
+
+            $restaurant->categories()->attach($faker->randomElements($category_ids, rand(1, 2)));
+            //pivot table seeding - attach 1/2 categories to restaurant
         }
     }
 }

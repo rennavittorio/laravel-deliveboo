@@ -17,17 +17,16 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-  
+
         $users_mail = ['team1@gmail.com', 'team2@gmail.com', 'team3@gmail.com', 'team4@gmail.com', 'team5@gmail.com'];
-      
-        for ($i = 0; $i < 5; $i++) {
 
+        //create 1 user for each fake-email, psw would be team+key number
+        foreach ($users_mail as $key => $mail) {
             $newUser = new User(); //utente
-            $newUser->name = "team1"; //nome
-            $newUser->email = $users_mail[$i]; //ciclo mail
-            $newUser->password = Hash::make("team1team1"); //password
-            $newUser->save(); //invio i dati dal database  
-
+            $newUser->name = "team" . ($key + 1); //nome
+            $newUser->email = $mail; //ciclo mail
+            $newUser->password = Hash::make("team" . ($key + 1) . "team" . ($key + 1)); //password
+            $newUser->save(); //invio i dati dal database
         }
     }
 }
