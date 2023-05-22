@@ -13,7 +13,7 @@ class UpdateDishRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class UpdateDishRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', 'max:255'], //nome del piatto
+            'img' => ['required', 'image'], //immagine del piatto
+            'description' => ['required'], //descrizione del piatto
+            'price' => ['required', 'min:0', 'numeric'], //prezzo del piatto
+            'is_visible' => ['required', 'boolean'], //visibilità del piatto
+            "restaurant_id" => ["exists:restaurants,id"] //id del ristorante
         ];
     }
 }

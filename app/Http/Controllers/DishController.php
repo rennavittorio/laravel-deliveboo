@@ -16,9 +16,9 @@ class DishController extends Controller
      */
     public function index()
     {
+        $dishes = Dish::all(); //prendo tutti i piatti dal database
         $user = Auth::user();
-
-        return view('dishes.index', compact('user'));
+        return view('dishes.index', compact('dishes', 'user')); //restituisco la vista index
     }
 
     /**
@@ -29,7 +29,6 @@ class DishController extends Controller
     public function create()
     {
         $user = Auth::user();
-
         return view('dishes.create', compact('user'));
     }
 
@@ -41,7 +40,9 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        //
+        $data = $request->validated(); //valido i dati inseriti
+        $newDish = Dish::create($data); //creo un nuovo piatto
+        return to_route('dishes.index'); //torno alla rotta index
     }
 
     /**
@@ -52,7 +53,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        return view('dishes.show', compact('dish')); //restituisco la vista show (non utilizzata per ora)
     }
 
     /**
@@ -64,8 +65,7 @@ class DishController extends Controller
     public function edit(Dish $dish)
     {
         $user = Auth::user();
-
-        return view('dishes.edit', compact('user'));
+        return view('dishes.edit', compact('user', 'dish'));
     }
 
     /**
@@ -77,7 +77,9 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        //
+        $data = $request->validated(); //valido i dati inseriti
+        $dish::update($data); //aggiorno i dati del piatto
+        return to_route('dishes.index', $dish); //torno alla rotta index
     }
 
     /**
@@ -88,6 +90,7 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        $dish->delete(); //elimino il piatto
+        return to_route('dishes.index'); //torno alla rotta index
     }
 }
