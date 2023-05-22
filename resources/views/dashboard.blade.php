@@ -6,6 +6,7 @@
     <h1 class="mt-5">
         Benvenuto nella tua dashboard
     </h1>
+
     {{-- Lista --}}
     <ul class="list-group mt-3">
         {{-- Piatti --}}

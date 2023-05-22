@@ -23,7 +23,7 @@ class DishSeeder extends Seeder
             $newDish = new Dish();
 
             $newDish->name = 'piatto' . $i;
-            $newDish->img = "https://picsum.photos/200";
+            $newDish->img = "../storage/image-not-found.png";
             $newDish->description = $faker->sentence(5);
             $newDish->price = $faker->randomFloat(2, 20, 30);
             $newDish->is_visible = $faker->numberBetween(0, 1);

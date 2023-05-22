@@ -7,6 +7,7 @@ use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -44,6 +45,13 @@ class DishController extends Controller
     {
         $user = Auth::user();
         $data = $request->validated(); //valido i dati inseriti
+
+        //serve per permettere l'upload di un'img da locale per l'user
+        if ($request->hasFile('img')) {
+            $cover_path = Storage::put('uploads', $data['img']);
+            $data['img'] = $cover_path; //riempiamo il campo che abbiamo già
+        };
+
         $data['restaurant_id'] = $user->id;
         $newDish = Dish::create($data); //creo un nuovo piatto
         return to_route('dishes.index'); //torno alla rotta index
