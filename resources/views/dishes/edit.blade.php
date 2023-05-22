@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-12">
-            <label for="img" class="form-label">img</label>
+            <label for="img" class="form-label">Immagine</label>
             
             <input type="file" class="form-control @error('img') is-invalid @enderror" id="url" name="img" value="{{ old('img', $dish->img) }}">
             @error('img')
@@ -42,7 +42,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
+            <label for="price" class="form-label">Prezzo</label>
             <div class="input-group">
                 <span class="input-group-text">€</span>
                 <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" step="0.01" min="0" value="{{ old('price', $dish->price) }}">
@@ -64,7 +64,7 @@
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Update dish</button>
+            <button type="submit" class="btn btn-primary">Modifica</button>
         </div>
     </form>
 

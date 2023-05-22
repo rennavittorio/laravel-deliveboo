@@ -8,7 +8,7 @@
         Ciao {{ $user->name }}, ecco la lista dei tuoi piatti:
     </h2>
 
-    <div class="grid">
+    <div class="grid py-5">
 
         
         <a href="{{ route('dishes.create') }}">
