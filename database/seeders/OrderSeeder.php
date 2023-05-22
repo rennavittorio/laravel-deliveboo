@@ -32,7 +32,7 @@ class OrderSeeder extends Seeder
             $dish_ids = Dish::where('restaurant_id', $id)->pluck('id')->all();
             //we need to recal only the restaurant_id related dishes
 
-            for ($i = 0; $i < 2; $i++) {
+            for ($i = 0; $i < rand(1, 3); $i++) {
                 //we create 2 order for each restaurant_id
                 $newOrder = new Order();
 
@@ -47,7 +47,7 @@ class OrderSeeder extends Seeder
 
                 $newOrder->save();
 
-                for ($j = 0; $j < 2; $j++) { //ATTENZIONE: usare diverse var per ciclo for innestato
+                for ($j = 0; $j < rand(1, 3); $j++) { //ATTENZIONE: usare diverse var per ciclo for innestato
                     //we attach 2 dishes to order, related to each rest
                     // $newOrder->dishes()->attach($faker->randomElement($dish_ids));
                     DB::table('dish_order')->insert([

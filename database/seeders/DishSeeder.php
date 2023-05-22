@@ -22,7 +22,7 @@ class DishSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             $newDish = new Dish();
 
-            $newDish->name = $faker->word();
+            $newDish->name = 'piatto' . $i;
             $newDish->img = "https://picsum.photos/200";
             $newDish->description = $faker->sentence(5);
             $newDish->price = $faker->randomFloat(2, 20, 30);

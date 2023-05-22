@@ -23,9 +23,9 @@ class UserSeeder extends Seeder
         //create 1 user for each fake-email, psw would be team+key number
         foreach ($users_mail as $key => $mail) {
             $newUser = new User(); //utente
-            $newUser->name = "team" . $key; //nome
+            $newUser->name = "team" . ($key + 1); //nome
             $newUser->email = $mail; //ciclo mail
-            $newUser->password = Hash::make("team" . $key . "team" . $key); //password
+            $newUser->password = Hash::make("team" . ($key + 1) . "team" . ($key + 1)); //password
             $newUser->save(); //invio i dati dal database
         }
     }

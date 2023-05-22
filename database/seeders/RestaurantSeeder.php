@@ -26,10 +26,11 @@ class RestaurantSeeder extends Seeder
 
         $user_ids = User::all()->pluck('id')->all();
 
-        foreach ($user_ids as $user) {
+        foreach ($user_ids as $key => $user) {
+
             $restaurant = new Restaurant();
 
-            $restaurant->name = $faker->name();
+            $restaurant->name = 'pizza' . ($key + 1);
             $restaurant->img = $picsum_img;
             $restaurant->address = $faker->address();
             $restaurant->slug = Str::slug($restaurant->name . '-' . $restaurant->address);
