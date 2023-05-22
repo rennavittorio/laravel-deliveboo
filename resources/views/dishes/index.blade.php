@@ -24,7 +24,7 @@
         @foreach ($dishes as $dish)
 
         <div class="card d-flex flex-column">
-            <img src="{{ $dish->img }}" class="card-img-top" alt="...">
+            <img src="{{ asset('storage/'. $dish->img) }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ $dish->name }}</h5>
                 <p class="card-text">{{ $dish->description }}</p>
