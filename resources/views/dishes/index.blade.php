@@ -34,6 +34,9 @@
                     <p class="card-text badge bg-danger">{{ $dish->is_visible }}</p>
 
                 </div>
+                <a class="btn btn-success my-2" href="{{ route('dishes.edit', $dish->id) }}">
+                    Edit
+                </a>
             </div>
         </div>
             

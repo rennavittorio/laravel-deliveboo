@@ -90,8 +90,14 @@ class DishController extends Controller
     public function update(UpdateDishRequest $request, Dish $dish)
     {
         $data = $request->validated(); //valido i dati inseriti
-        $dish::update($data); //aggiorno i dati del piatto
-        return to_route('dishes.index', $dish); //torno alla rotta index
+
+        if ($request->hasFile('img')) {
+            $cover_path = Storage::put('uploads', $data['img']);
+            $data['img'] = $cover_path; //riempiamo il campo che abbiamo già
+        };
+
+        $dish->update($data); //aggiorno i dati del piatto
+        return to_route('dishes.index'); //torno alla rotta index
     }
 
     /**
