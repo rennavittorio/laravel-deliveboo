@@ -1,1 +1,32 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+
+//general rules
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+//index-page
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    img {
+        aspect-ratio: 18/9;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .card{
+
+        &:first-child{
+            height: 100%;
+        }
+
+        &:hover {
+            background-color: red;
+        }
+    }
+}
