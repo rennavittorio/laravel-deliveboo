@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
@@ -16,8 +17,9 @@ class DishController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::all(); //prendo tutti i piatti dal database
         $user = Auth::user();
+
+        $dishes = Dish::where('restaurant_id', $user->id)->get(); //controlliamo scarico dishes solo per user registrato
         return view('dishes.index', compact('dishes', 'user')); //restituisco la vista index
     }
 
