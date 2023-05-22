@@ -32,7 +32,7 @@ class RestaurantSeeder extends Seeder
             $restaurant->name = $faker->name();
             $restaurant->img = $picsum_img;
             $restaurant->address = $faker->address();
-            $restaurant->slug = Str::slug($restaurant->name . $restaurant->address);
+            $restaurant->slug = Str::slug($restaurant->name . '-' . $restaurant->address);
             $restaurant->vat =  $faker->bothify('#######-###-#');
             $restaurant->user_id = $user;
 

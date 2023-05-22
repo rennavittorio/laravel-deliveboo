@@ -47,7 +47,7 @@ class OrderSeeder extends Seeder
 
                 $newOrder->save();
 
-                for ($i = 0; $i < 2; $i++) {
+                for ($j = 0; $j < 2; $j++) { //ATTENZIONE: usare diverse var per ciclo for innestato
                     //we attach 2 dishes to order, related to each rest
                     // $newOrder->dishes()->attach($faker->randomElement($dish_ids));
                     DB::table('dish_order')->insert([
