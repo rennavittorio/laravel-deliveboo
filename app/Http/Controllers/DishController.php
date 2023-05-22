@@ -20,7 +20,7 @@ class DishController extends Controller
     {
         $user = Auth::user();
 
-        $dishes = Dish::where('restaurant_id', $user->id)->get(); //controlliamo scarico dishes solo per user registrato
+        $dishes = Dish::where('restaurant_id', $user->id)->orderBy('updated_at', 'desc')->get(); //controlliamo scarico dishes solo per user registrato
         return view('dishes.index', compact('dishes', 'user')); //restituisco la vista index
     }
 
