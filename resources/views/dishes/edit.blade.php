@@ -4,7 +4,9 @@
 <div class="container">
 
 
-    siamo dentro EDIT, caro il nostro bel {{ $user->name }}
+    <h2 class="fs-4 text-secondary my-4">
+        Ciao {{ $user->name }}, modifica il tuo {{ $dish->name }}:
+    </h2>
 
 
     <form class="row g-3" action="{{ route('dishes.update', $dish) }}" method="POST" enctype="multipart/form-data">
@@ -31,7 +33,7 @@
 
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
-            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('price', $dish->description) }}</textarea>
+            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('description', $dish->description) }}</textarea>
             @error('description')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -52,9 +54,9 @@
 
         <div class="col-12">
             <label for="is_visible" class="form-label">Visibilità</label>
-            <select name="is_visible" class="form-control @error('is_visible') is-invalid @enderror" id="is_visible" value="{{ old('price', $dish->is_visible) }}">
-                <option value="1">Visibile</option>
-                <option value="0">Non visibile</option>
+            <select name="is_visible" class="form-control @error('is_visible') is-invalid @enderror" id="is_visible" value="">
+                <option @selected(old('is_visible', $dish->is_visible) == 1) value="1">Visibile</option>
+                <option @selected(old('is_visible', $dish->is_visible) == 0) value="0">Non visibile</option>
             </select>
             @error('is_visible')
                 <div class="text-danger">{{ $message }}</div>
@@ -62,7 +64,7 @@
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Save new Project</button>
+            <button type="submit" class="btn btn-primary">Update dish</button>
         </div>
     </form>
 

@@ -4,7 +4,9 @@
 <div class="container">
 
 
-    siamo dentro CREATE, caro il nostro bel {{ $user->name }}
+    <h2 class="fs-4 text-secondary my-4">
+        Ciao {{ $user->name }}, crea il tuo nuovo piatto:
+    </h2>
 
     <form class="row g-3" action="{{ route('dishes.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -58,21 +60,9 @@
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Save new Project</button>
+            <button type="submit" class="btn btn-primary">Save new dish</button>
         </div>
     </form>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                {{-- $error->all() ci restituisce un array/collection, che cicla --}}
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
 
 </div>
 @endsection

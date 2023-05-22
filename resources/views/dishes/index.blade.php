@@ -45,9 +45,5 @@
     </div>
 
 
-    <a href="{{ route('dishes.create')}}" class="btn btn-primary m-3">create</a>
-    {{-- <a href="{{ route('dishes.edit')}}" class="btn btn-primary m-3">edit</a> --}}
-
-
 </div>
 @endsection
