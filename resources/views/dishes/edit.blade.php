@@ -65,6 +65,7 @@
 
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Modifica</button>
+            <a href="{{ route('dishes.index') }}" class="btn btn-warning">Torna a lista</a>
         </div>
     </form>
 
