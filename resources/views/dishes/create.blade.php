@@ -13,7 +13,7 @@
 
         <div class="col-12">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" maxlength="255">
             @error('name')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -41,7 +41,7 @@
             <label for="price" class="form-label">Prezzo</label>
             <div class="input-group">
                 <span class="input-group-text">€</span>
-                <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" value="{{ old('price') }}">
+                <input type="number" class="form-control" id="price" name="price" step="0.01" min="0.01" max="999" value="{{ old('price') }}">
             </div>
             @error('price')
                 <div class="text-danger">{{ $message }}</div>

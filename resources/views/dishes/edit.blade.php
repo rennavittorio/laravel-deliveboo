@@ -16,7 +16,7 @@
 
         <div class="col-12">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $dish->name) }}">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $dish->name) }}" minlength="2" maxlength="255">
             @error('name')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -30,7 +30,7 @@
                         <input type="file" class="form-control @error('img') is-invalid @enderror" id="url" name="img" value="{{ old('img', $dish->img) }}">
                     </div>
                     <div class="col-6 d-flex flex-column align-items-center">
-                        <label for="img" class="form-label fw-lighter fst-italic">" Immagine Impostata "</label>
+                        <label for="img" class="form-label fw-lighter fst-italic">" Immagine Precedente "</label>
                         <img src="{{ asset('storage/'. $dish->img) }}" class="max" alt="">
                     </div>
                 </div>
@@ -54,7 +54,7 @@
             <label for="price" class="form-label">Prezzo</label>
             <div class="input-group">
                 <span class="input-group-text">€</span>
-                <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" step="0.01" min="0" value="{{ old('price', $dish->price) }}">
+                <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" step="0.01" min="0.01" max="999" value="{{ old('price', $dish->price) }}">
             </div>
             @error('price')
                 <div class="text-danger">{{ $message }}</div>
