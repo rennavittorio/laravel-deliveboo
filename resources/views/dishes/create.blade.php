@@ -13,7 +13,7 @@
 
         <div class="col-12">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" maxlength="255">
             @error('name')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -29,7 +29,7 @@
 
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
-            <textarea name="description" class="form-control" id="description">{{ old('description') }}</textarea>
+            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('description') }}</textarea>
             @error('description')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -41,7 +41,7 @@
             <label for="price" class="form-label">Prezzo</label>
             <div class="input-group">
                 <span class="input-group-text">€</span>
-                <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" value="{{ old('price') }}">
+                <input type="number" class="form-control" id="price" name="price" step="0.01" min="0.01" max="999" value="{{ old('price') }}">
             </div>
             @error('price')
                 <div class="text-danger">{{ $message }}</div>
