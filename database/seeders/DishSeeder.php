@@ -17,21 +17,99 @@ class DishSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $restaurant_ids = Restaurant::all()->pluck("id")->all();
-
-        for ($i = 0; $i < 50; $i++) {
-            $newDish = new Dish();
-
-            $newDish->name = 'piatto' . $i;
-            $newDish->img = "../storage/image-not-found.png";
-            $newDish->description = $faker->sentence(5);
-            $newDish->price = $faker->randomFloat(2, 20, 30);
-            $newDish->is_visible = $faker->numberBetween(0, 1);
-
-            $newDish->restaurant_id = $faker->randomElement($restaurant_ids);
-            //assign a rest_id to the new dish
-
-            $newDish->save();
+        //Piatti
+        $dishes = [
+            [
+                'name' => 'Pizza Margherita',
+                'img' => 'https://shorturl.at/cemwE',
+                'description' => 'Pizza classica',
+                'price' => 5.00,
+                'is_visible' => 1,
+                'restaurant_id' => 1
+            ],
+            [
+                'name' => 'Polpo con patate',
+                'img' => 'https://shorturl.at/agrG0',
+                'description' => 'Polpo con le patate',
+                'price' => 7.00,
+                'is_visible' => 1,
+                'restaurant_id' => 1
+            ],
+            [
+                'name' => 'Nigiri al salmone',
+                'img' => 'https://shorturl.at/ijCNR',
+                'description' => 'Nigiri al salmone',
+                'price' => 6.00,
+                'is_visible' => 1,
+                'restaurant_id' => 2
+            ],
+            [
+                'name' => 'Ramen',
+                'img' => 'https://shorturl.at/rxDL4',
+                'description' => 'Ramen con carne',
+                'price' => 10.00,
+                'is_visible' => 1,
+                'restaurant_id' => 2
+            ],
+            [
+                'name' => 'Empanadas',
+                'img' => 'https://shorturl.at/aiwWY',
+                'description' => 'Empanadas di carne',
+                'price' => 6.50,
+                'is_visible' => 1,
+                'restaurant_id' => 3
+            ],
+            [
+                'name' => 'Carne con patate',
+                'img' => 'https://shorturl.at/dmCM7',
+                'description' => 'Carne con contorno di patate',
+                'price' => 12.00,
+                'is_visible' => 1,
+                'restaurant_id' => 3
+            ],
+            [
+                'name' => 'Escargot',
+                'img' => 'https://shorturl.at/uwy79',
+                'description' => 'Lumache',
+                'price' => 4.00,
+                'is_visible' => 1,
+                'restaurant_id' => 4
+            ],
+            [
+                'name' => 'Omelette',
+                'img' => 'https://shorturl.at/sLNYZ',
+                'description' => 'Omelette',
+                'price' => 6.50,
+                'is_visible' => 1,
+                'restaurant_id' => 4
+            ],
+            [
+                'name' => 'Gyoza',
+                'img' => 'https://shorturl.at/uOSTY',
+                'description' => 'Ravioli di carne',
+                'price' => 4.50,
+                'is_visible' => 1,
+                'restaurant_id' => 5
+            ],
+            [
+                'name' => 'Riso alla cantonese',
+                'img' => 'https://shorturl.at/hkmJT',
+                'description' => 'Riso alla cantonese',
+                'price' => 6,
+                'is_visible' => 1,
+                'restaurant_id' => 5
+            ],
+        ];
+        //Ciclo
+        foreach ($dishes as $dish) {
+            $newDish = new Dish(); //nuovo piatto
+            $newDish->name = $dish['name']; //nome del piatto
+            $newDish->img = $dish['img']; //immagine del piatto
+            $newDish->description = $dish['description']; //descrizione del piatto
+            $newDish->price = $dish['price']; //prezzo del piatto
+            $newDish->is_visible = $dish['is_visible']; //visibilità del piatto
+            $newDish->restaurant_id = $dish['restaurant_id']; //id del ristorante
+            $newDish->save(); //invio i dati al database
         }
     }
 }
