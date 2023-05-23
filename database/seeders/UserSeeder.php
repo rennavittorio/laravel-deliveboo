@@ -17,16 +17,41 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-
-        $users_mail = ['team1@gmail.com', 'team2@gmail.com', 'team3@gmail.com', 'team4@gmail.com', 'team5@gmail.com'];
-
-        //create 1 user for each fake-email, psw would be team+key number
-        foreach ($users_mail as $key => $mail) {
-            $newUser = new User(); //utente
-            $newUser->name = "team" . ($key + 1); //nome
-            $newUser->email = $mail; //ciclo mail
-            $newUser->password = Hash::make("team" . ($key + 1) . "team" . ($key + 1)); //password
-            $newUser->save(); //invio i dati dal database
+        //Utenti
+        $users = [
+            [
+                'name' => 'Francesco',
+                'email' => 'francesco@gmail.com',
+                'password' => Hash::make('francesco')
+            ],
+            [
+                'name' => 'Vittorio',
+                'email' => 'vittorio@gmail.com',
+                'password' => Hash::make('vittorio')
+            ],
+            [
+                'name' => 'Lapo',
+                'email' => 'lapo@gmail.com',
+                'password' => Hash::make('lapo')
+            ],
+            [
+                'name' => 'Bernardo',
+                'email' => 'bernardo@gmail.com',
+                'password' => Hash::make('bernardo')
+            ],
+            [
+                'name' => 'Stefano',
+                'email' => 'stefano@gmail.com',
+                'password' => Hash::make('stefano')
+            ]
+        ];
+        //Ciclo
+        foreach ($users as $user) {
+            $newUser = new User(); //nuovo utente
+            $newUser->name = $user['name']; //nome dell'utente
+            $newUser->email = $user['email']; //email dell'utente
+            $newUser->password = $user['password']; //password dell'utente
+            $newUser->save(); //invio i dati al database
         }
     }
 }
