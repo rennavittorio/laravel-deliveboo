@@ -24,7 +24,9 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $category_ids = Category::all();
+
+        return view('auth.register', compact('category_ids'));
     }
 
     /**
@@ -34,6 +36,9 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request, Faker $faker): RedirectResponse
     {
+
+        dd($request);
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
