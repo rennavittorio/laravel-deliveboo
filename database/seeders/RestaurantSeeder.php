@@ -28,7 +28,7 @@ class RestaurantSeeder extends Seeder
                 'slug' => Str::slug('Pizzeria Catullo' . '-' . 'Corso Moncalieri, 176, 10133 Torino TO'),
                 'address' => 'Corso Moncalieri, 176, 10133 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
-                'category_ids' => [1, 9]
+                'category_ids' => [1, 9, 10, 11]
             ],
             [
                 'name' => 'Miyo Sushi',
@@ -37,7 +37,7 @@ class RestaurantSeeder extends Seeder
                 'slug' => Str::slug('Miyo Sushi' . '-' . 'Via Paolo Sacchi, 63, 10125 Torino TO'),
                 'address' => 'Via Paolo Sacchi, 63, 10125 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
-                'category_ids' => [3, 7]
+                'category_ids' => [4, 9, 12]
             ],
             [
                 'name' => 'La Taba',
@@ -46,7 +46,7 @@ class RestaurantSeeder extends Seeder
                 'slug' => Str::slug('La Taba' . '-' . 'Via dei Quartieri, 2, 10122 Torino TO'),
                 'address' => 'Via dei Quartieri, 2, 10122 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
-                'category_ids' => [8]
+                'category_ids' => [7, 10]
             ],
             [
                 'name' => 'Fondoo',
@@ -55,7 +55,7 @@ class RestaurantSeeder extends Seeder
                 'slug' => Str::slug('Fondoo' . '-' . 'Via Maria Vittoria, 11/L, 10123 Torino TO'),
                 'address' => 'Via Maria Vittoria, 11/L, 10123 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
-                'category_ids' => [8]
+                'category_ids' => [2, 10]
             ],
             [
                 'name' => 'Zheng Yang',
@@ -64,7 +64,7 @@ class RestaurantSeeder extends Seeder
                 'slug' => Str::slug('Zheng Yang' . '-' . 'Via Principi d\'Acaja, 61, 10100 Torino TO'),
                 'address' => 'Via Principi d\'Acaja, 61, 10100 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
-                'category_ids' => [2, 7, 8]
+                'category_ids' => [3, 9, 10]
             ]
         ];
         //Ciclo
