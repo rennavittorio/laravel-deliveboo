@@ -7,6 +7,29 @@ a {
     color: currentColor;
 }
 
+//layout
+.navbar {
+    background-color: #FF6D00;
+}
+
+.welcome .card {
+    width: 300px;
+    height: 200px;
+    font-size: 2rem;
+    background-color: #FF6D00;
+    color: white;
+
+    .text-high {
+        font-weight: 700;
+    }
+
+    &:hover {
+        background-color: #FF8500;
+        color: #5A189A;
+    }
+
+}
+
 //index-page
 .grid {
     display: grid;
@@ -23,10 +46,19 @@ a {
 
         &:first-child{
             height: 100%;
+
+            &:hover{
+                cursor: pointer;
+                background-color: #5A189A;
+                color: white;
+            }
         }
 
-        &:hover {
-            background-color: red;
-        }
+
+        // &:hover {
+        //     cursor: pointer;
+        //     background-color: #5A189A;
+        //     color: white;
+        // }
     }
 }

@@ -20,7 +20,7 @@
         </div>
 
         <div class="col-12">
-            <label for="img" class="form-label">img</label>
+            <label for="img" class="form-label">Immagine</label>
             <input type="file" class="form-control" id="url" name="img" value="{{ old('img') }}">
             @error('img')
                 <div class="text-danger">{{ $message }}</div>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
+            <label for="price" class="form-label">Prezzo</label>
             <div class="input-group">
                 <span class="input-group-text">€</span>
                 <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" value="{{ old('price') }}">
@@ -60,7 +60,8 @@
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Save new dish</button>
+            <button type="submit" class="btn btn-primary">Salva</button>
+            <a href="{{ route('dishes.index') }}" class="btn btn-warning">Torna a lista</a>
         </div>
     </form>
 
