@@ -16,6 +16,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Storage;
 
 class RegisteredUserController extends Controller
 {
@@ -37,7 +38,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request, Faker $faker): RedirectResponse
     {
 
-        dd($request);
+        // dd($request);
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -51,23 +52,46 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        //TO-DO: get real data from form
-        //fake-iamo la registrazione del rest con quella dell'user
         $picsum_img = 'https://picsum.photos/200';
-        $category_ids = Category::all()->pluck('id')->all();
 
         $restaurant = new Restaurant();
 
-        $restaurant->name = 'pizza' . ($user->id);
-        $restaurant->img = $picsum_img;
-        $restaurant->address = $faker->address();
+        $restaurant->name = $request->name;
+        $restaurant->address = $request->address;
         $restaurant->slug = Str::slug($restaurant->name . '-' . $restaurant->address);
-        $restaurant->vat =  $faker->bothify('#######-###-#');
+        $restaurant->vat =  $request->vat;
         $restaurant->user_id = $user->id;
+
+        if ($request->hasFile('img')) {
+            $cover_path = Storage::put('uploads', $request['img']);
+            $request['img'] = $cover_path;
+        };
+
+        $restaurant->img = $request->img ?? $picsum_img;
 
         $restaurant->save();
 
-        $restaurant->categories()->attach($faker->randomElements($category_ids, rand(1, 2)));
+        if (isset($request['categories'])) { //se l'array tags è presente (non null)
+            $restaurant->categories()->attach($request['categories']); //attacchiamo l'array di tag al post
+        }
+
+        //TO-DO: get real data from form
+        //fake-iamo la registrazione del rest con quella dell'user
+        // $picsum_img = 'https://picsum.photos/200';
+        // $category_ids = Category::all()->pluck('id')->all();
+
+        // $restaurant = new Restaurant();
+
+        // $restaurant->name = 'pizza' . ($user->id);
+        // $restaurant->img = $picsum_img;
+        // $restaurant->address = $faker->address();
+        // $restaurant->slug = Str::slug($restaurant->name . '-' . $restaurant->address);
+        // $restaurant->vat =  $faker->bothify('#######-###-#');
+        // $restaurant->user_id = $user->id;
+
+        // $restaurant->save();
+
+        // $restaurant->categories()->attach($faker->randomElements($category_ids, rand(1, 2)));
         //end fake
 
         event(new Registered($user));
