@@ -17,8 +17,6 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-
-        $users_mail = ['team1@gmail.com', 'team2@gmail.com', 'team3@gmail.com', 'team4@gmail.com', 'team5@gmail.com'];
         //Utenti
         $users = [
             [
