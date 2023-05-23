@@ -19,27 +19,65 @@ class RestaurantSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-
-        $picsum_img = 'https://picsum.photos/200';
-
-        $category_ids = Category::all()->pluck('id')->all();
-
-        $user_ids = User::all()->pluck('id')->all();
-
-        foreach ($user_ids as $key => $user) {
-
-            $restaurant = new Restaurant();
-
-            $restaurant->name = 'pizza' . ($key + 1);
-            $restaurant->img = $picsum_img;
-            $restaurant->address = $faker->address();
-            $restaurant->slug = Str::slug($restaurant->name . '-' . $restaurant->address);
-            $restaurant->vat =  $faker->bothify('#######-###-#');
-            $restaurant->user_id = $user;
-
-            $restaurant->save();
-
-            $restaurant->categories()->attach($faker->randomElements($category_ids, rand(1, 2)));
+        //Ristoranti
+        $restaurants = [
+            [
+                'name' => 'Pizzeria Catullo',
+                'user_id' => 1,
+                'img' => 'https://shorturl.at/suzY9',
+                'slug' => Str::slug('Pizzeria Catullo' . '-' . 'Corso Moncalieri, 176, 10133 Torino TO'),
+                'address' => 'Corso Moncalieri, 176, 10133 Torino TO',
+                'vat' => $faker->bothify('#######-###-#'),
+                'category_ids' => [1, 9]
+            ],
+            [
+                'name' => 'Miyo Sushi',
+                'user_id' => 2,
+                'img' => 'https://shorturl.at/yGHY0',
+                'slug' => Str::slug('Miyo Sushi' . '-' . 'Via Paolo Sacchi, 63, 10125 Torino TO'),
+                'address' => 'Via Paolo Sacchi, 63, 10125 Torino TO',
+                'vat' => $faker->bothify('#######-###-#'),
+                'category_ids' => [3, 7]
+            ],
+            [
+                'name' => 'La Taba',
+                'user_id' => 3,
+                'img' => 'https://shorturl.at/ryTX6',
+                'slug' => Str::slug('La Taba' . '-' . 'Via dei Quartieri, 2, 10122 Torino TO'),
+                'address' => 'Via dei Quartieri, 2, 10122 Torino TO',
+                'vat' => $faker->bothify('#######-###-#'),
+                'category_ids' => [8]
+            ],
+            [
+                'name' => 'Fondoo',
+                'user_id' => 4,
+                'img' => 'https://shorturl.at/mOSUV',
+                'slug' => Str::slug('Fondoo' . '-' . 'Via Maria Vittoria, 11/L, 10123 Torino TO'),
+                'address' => 'Via Maria Vittoria, 11/L, 10123 Torino TO',
+                'vat' => $faker->bothify('#######-###-#'),
+                'category_ids' => [8]
+            ],
+            [
+                'name' => 'Zheng Yang',
+                'user_id' => 5,
+                'img' => 'https://shorturl.at/kyDRZ',
+                'slug' => Str::slug('Zheng Yang' . '-' . 'Via Principi d\'Acaja, 61, 10100 Torino TO'),
+                'address' => 'Via Principi d\'Acaja, 61, 10100 Torino TO',
+                'vat' => $faker->bothify('#######-###-#'),
+                'category_ids' => [2, 7, 8]
+            ]
+        ];
+        //Ciclo
+        foreach ($restaurants as $restaurant) {
+            $newRestaurant = new Restaurant(); //creo un nuovo ristorante
+            $newRestaurant->name = $restaurant['name']; //nome ristorante
+            $newRestaurant->img = $restaurant['img']; //immagine del ristorante
+            $newRestaurant->address = $restaurant['address']; //indirizzo del ristorante
+            $newRestaurant->slug = $restaurant['slug']; //slug del ristorante
+            $newRestaurant->vat =  $restaurant['vat']; //partita iva del ristorante
+            $newRestaurant->user_id = $restaurant['user_id']; //id dell'utente
+            $newRestaurant->save(); //salvo i dati nel database
+            $newRestaurant->categories()->attach($restaurant['category_ids']); //associo la categoria al ristorante
             //pivot table seeding - attach 1/2 categories to restaurant
         }
     }
