@@ -24,7 +24,7 @@ class RestaurantSeeder extends Seeder
             [
                 'name' => 'Pizzeria Catullo',
                 'user_id' => 1,
-                'img' => 'https://shorturl.at/suzY9',
+                'img' => 'catullo.png',
                 'slug' => Str::slug('Pizzeria Catullo' . '-' . 'Corso Moncalieri, 176, 10133 Torino TO'),
                 'address' => 'Corso Moncalieri, 176, 10133 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
@@ -33,7 +33,7 @@ class RestaurantSeeder extends Seeder
             [
                 'name' => 'Miyo Sushi',
                 'user_id' => 2,
-                'img' => 'https://shorturl.at/yGHY0',
+                'img' => 'miyo.png',
                 'slug' => Str::slug('Miyo Sushi' . '-' . 'Via Paolo Sacchi, 63, 10125 Torino TO'),
                 'address' => 'Via Paolo Sacchi, 63, 10125 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
@@ -42,7 +42,7 @@ class RestaurantSeeder extends Seeder
             [
                 'name' => 'La Taba',
                 'user_id' => 3,
-                'img' => 'https://shorturl.at/ryTX6',
+                'img' => 'la_taba.png',
                 'slug' => Str::slug('La Taba' . '-' . 'Via dei Quartieri, 2, 10122 Torino TO'),
                 'address' => 'Via dei Quartieri, 2, 10122 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
@@ -51,7 +51,7 @@ class RestaurantSeeder extends Seeder
             [
                 'name' => 'Fondoo',
                 'user_id' => 4,
-                'img' => 'https://shorturl.at/mOSUV',
+                'img' => 'fondoo.jpg',
                 'slug' => Str::slug('Fondoo' . '-' . 'Via Maria Vittoria, 11/L, 10123 Torino TO'),
                 'address' => 'Via Maria Vittoria, 11/L, 10123 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
@@ -60,7 +60,7 @@ class RestaurantSeeder extends Seeder
             [
                 'name' => 'Zheng Yang',
                 'user_id' => 5,
-                'img' => 'https://shorturl.at/kyDRZ',
+                'img' => 'zheng_yang.png',
                 'slug' => Str::slug('Zheng Yang' . '-' . 'Via Principi d\'Acaja, 61, 10100 Torino TO'),
                 'address' => 'Via Principi d\'Acaja, 61, 10100 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),

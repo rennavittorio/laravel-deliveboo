@@ -21,7 +21,7 @@ class DishSeeder extends Seeder
         $dishes = [
             [
                 'name' => 'Pizza Margherita',
-                'img' => 'https://shorturl.at/cemwE',
+                'img' => 'pizza_margherita.jpg',
                 'description' => 'Pizza classica',
                 'price' => 5.00,
                 'is_visible' => 1,
@@ -29,7 +29,7 @@ class DishSeeder extends Seeder
             ],
             [
                 'name' => 'Polpo con patate',
-                'img' => 'https://shorturl.at/agrG0',
+                'img' => 'polpo_con_patate.jpg',
                 'description' => 'Polpo con le patate',
                 'price' => 7.00,
                 'is_visible' => 1,
@@ -37,7 +37,7 @@ class DishSeeder extends Seeder
             ],
             [
                 'name' => 'Nigiri al salmone',
-                'img' => 'https://shorturl.at/ijCNR',
+                'img' => 'nigiri_al_salmone.png',
                 'description' => 'Nigiri al salmone',
                 'price' => 6.00,
                 'is_visible' => 1,
@@ -45,7 +45,7 @@ class DishSeeder extends Seeder
             ],
             [
                 'name' => 'Ramen',
-                'img' => 'https://shorturl.at/rxDL4',
+                'img' => 'ramen.png',
                 'description' => 'Ramen con carne',
                 'price' => 10.00,
                 'is_visible' => 1,
@@ -53,7 +53,7 @@ class DishSeeder extends Seeder
             ],
             [
                 'name' => 'Empanadas',
-                'img' => 'https://shorturl.at/aiwWY',
+                'img' => 'empanadas.png',
                 'description' => 'Empanadas di carne',
                 'price' => 6.50,
                 'is_visible' => 1,
@@ -61,7 +61,7 @@ class DishSeeder extends Seeder
             ],
             [
                 'name' => 'Carne con patate',
-                'img' => 'https://shorturl.at/dmCM7',
+                'img' => 'carne_con_patate.jpg',
                 'description' => 'Carne con contorno di patate',
                 'price' => 12.00,
                 'is_visible' => 1,
@@ -69,7 +69,7 @@ class DishSeeder extends Seeder
             ],
             [
                 'name' => 'Escargot',
-                'img' => 'https://shorturl.at/uwy79',
+                'img' => 'escargot.png',
                 'description' => 'Lumache',
                 'price' => 4.00,
                 'is_visible' => 1,
@@ -77,7 +77,7 @@ class DishSeeder extends Seeder
             ],
             [
                 'name' => 'Omelette',
-                'img' => 'https://shorturl.at/sLNYZ',
+                'img' => 'omelette.png',
                 'description' => 'Omelette',
                 'price' => 6.50,
                 'is_visible' => 1,
@@ -85,7 +85,7 @@ class DishSeeder extends Seeder
             ],
             [
                 'name' => 'Gyoza',
-                'img' => 'https://shorturl.at/uOSTY',
+                'img' => 'gyoza.jpg',
                 'description' => 'Ravioli di carne',
                 'price' => 4.50,
                 'is_visible' => 1,
@@ -93,7 +93,7 @@ class DishSeeder extends Seeder
             ],
             [
                 'name' => 'Riso alla cantonese',
-                'img' => 'https://shorturl.at/hkmJT',
+                'img' => 'riso_alla_cantonese.png',
                 'description' => 'Riso alla cantonese',
                 'price' => 6,
                 'is_visible' => 1,
