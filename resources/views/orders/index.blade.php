@@ -59,7 +59,7 @@
                                 {{-- Orario --}}
                                 <td>{{ $order->created_at }}</td>
                                 {{-- Stato del pagamento --}}
-                                <td>Non pagato</td>
+                                <td><span class="badge text-bg-danger">Non pagato</span></td>
                                 {{-- Totale --}}
                                 <td>{{ $order->total }}</td>
                                 {{-- Dettagli --}}
@@ -88,7 +88,7 @@
                                 {{-- Orario --}}
                                 <td>{{ $order->created_at }}</td>
                                 {{-- Stato del pagamento --}}
-                                <td>Pagato</td>
+                                <td><span class="badge text-bg-success">Pagato</span></td>
                                 {{-- Totale --}}
                                 <td>{{ $order->total }}</td>
                                 {{-- Dettagli --}}
@@ -116,12 +116,12 @@
                         {{-- Se l'ordine non è stato pagato --}}
                         @if ($order->status === 0)
                             {{-- Stato del pagamento --}}
-                            <td>Non pagato</td>
+                            <td><span class="badge text-bg-danger">Non pagato</span></td>
                         @endif
                         {{-- Se l'ordine è stato pagato --}}
                         @if ($order->status === 1)
                             {{-- Stato del pagamento --}}
-                            <td>Pagato</td>
+                            <td><span class="badge text-bg-success">Pagato</span></td>
                         @endif
                         {{-- Totale --}}
                         <td>{{ $order->total }}</td>

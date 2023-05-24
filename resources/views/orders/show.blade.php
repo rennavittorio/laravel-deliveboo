@@ -6,6 +6,7 @@
     <h1 class="my-4">
         Ordine n°{{ $order->id }}
     </h1>
+    <a href="{{ url()->previous() }}" class="btn btn-primary">Torna indietro</a>
     {{-- Dettagli del cliente --}}
     <h2 class="my-3 fs-3">
         Dettagli cliente
@@ -41,12 +42,12 @@
                 {{-- Se l'ordine non è stato pagato --}}
                 @if ($order->status === 0)
                     {{-- Stato del pagamento --}}
-                    <td>Non pagato</td>
+                    <td><span class="badge text-bg-danger">Non pagato</span></td>
                 @endif
                 {{-- Se l'ordine è stato pagato --}}
                 @if ($order->status === 1)
                     {{-- Stato del pagamento --}}
-                    <td>Pagato</td>
+                    <td><span class="badge text-bg-success">Pagato</span></td>
                 @endif
                 {{-- Totale --}}
                 <td>{{ $order->total }}</td>
