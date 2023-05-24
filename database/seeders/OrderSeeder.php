@@ -79,9 +79,9 @@ class OrderSeeder extends Seeder
                         'quantity' => 2
                     ]
                 ],
-                'total' => 16.00,
+                'total' => 13.00,
                 'status' => 0,
-                'first_name' => 'Gialuca',
+                'first_name' => 'Gianluca',
                 'last_name' => 'Lomarco',
                 'email' => 'gianluca@gmail.com',
                 'phone' => $faker->randomNumber(9, true),
