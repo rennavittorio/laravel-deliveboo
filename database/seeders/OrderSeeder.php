@@ -28,7 +28,7 @@ class OrderSeeder extends Seeder
                     ]
                 ],
                 'total' => 10.00,
-                'status' => 0,
+                'status' => 1,
                 'first_name' => 'Mauro',
                 'last_name' => 'Formisano',
                 'email' => 'mauro@gmail.com',
@@ -64,7 +64,7 @@ class OrderSeeder extends Seeder
                     ]
                 ],
                 'total' => 18.50,
-                'status' => 0,
+                'status' => 1,
                 'first_name' => 'Adriano',
                 'last_name' => 'Grimaldi',
                 'email' => 'adriano@gmail.com',
@@ -79,9 +79,9 @@ class OrderSeeder extends Seeder
                         'quantity' => 2
                     ]
                 ],
-                'total' => 16.00,
+                'total' => 13.00,
                 'status' => 0,
-                'first_name' => 'Gialuca',
+                'first_name' => 'Gianluca',
                 'last_name' => 'Lomarco',
                 'email' => 'gianluca@gmail.com',
                 'phone' => $faker->randomNumber(9, true),
@@ -100,7 +100,7 @@ class OrderSeeder extends Seeder
                     ]
                 ],
                 'total' => 25.50,
-                'status' => 0,
+                'status' => 1,
                 'first_name' => 'Giuseppe',
                 'last_name' => 'Funicello',
                 'email' => 'giuseppe@gmail.com',

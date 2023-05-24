@@ -12,6 +12,6 @@
         {{-- Piatti --}}
         <li class="list-group-item"><a href="{{ route('dishes.index') }}">Visualizza i tuoi piatti</a></li>
         {{-- Ordini --}}
-        <li class="list-group-item"><a href="">Visualizza i tuoi ordini</a></li>
+        <li class="list-group-item"><a href="{{ route('orders.index') }}">Visualizza i tuoi ordini</a></li>
     </ul>
 @endsection

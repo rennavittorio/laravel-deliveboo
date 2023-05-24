@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\DishController;
+use App\Http\Controllers\DishController; //piatti
+use App\Http\Controllers\OrderController; //ordini
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//Piatti
 Route::resource('dishes', DishController::class);
+
+//Ordini
+Route::resource('orders', OrderController::class);
 
 require __DIR__ . '/auth.php';
