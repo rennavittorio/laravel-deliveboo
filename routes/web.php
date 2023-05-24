@@ -24,7 +24,7 @@ Route::get('/', function () {
         return view('welcome', compact('restaurant')); //li mando a 'welcome'
     }
 
-    return view('welcome');
+    return redirect('http://localhost:5174/'); //redirect to frontend
 });
 
 Route::get('/dashboard', function () {
