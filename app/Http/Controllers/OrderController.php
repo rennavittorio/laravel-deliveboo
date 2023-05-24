@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Restaurant;
-use App\Models\Dish;
+use App\Models\Restaurant; //ristorante
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use Illuminate\Support\Facades\Auth; //auth
@@ -58,7 +57,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('orders.show', compact('order')); //restituisco la vista show
     }
 
     /**

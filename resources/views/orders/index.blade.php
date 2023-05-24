@@ -33,7 +33,7 @@
                 <th scope="col">Orario</th>
                 <th scope="col">Stato pagamento</th>
                 <th scope="col">Totale (€)</th>
-                <th scope="col">Recap</th>
+                <th scope="col">Dettagli</th>
             </tr>
         </thead>
         <tbody>
@@ -62,8 +62,8 @@
                                 <td>Non pagato</td>
                                 {{-- Totale --}}
                                 <td>{{ $order->total }}</td>
-                                {{-- Recap dell'ordine --}}
-                                <td><a href="#">Piatti ordinati</a></td>
+                                {{-- Dettagli --}}
+                                <td><a href="{{ route('orders.show', $order) }}" class="btn btn-secondary">Dettagli</a></td>
                             </tr>
                         @endif
                     @endforeach
@@ -91,8 +91,8 @@
                                 <td>Pagato</td>
                                 {{-- Totale --}}
                                 <td>{{ $order->total }}</td>
-                                {{-- Recap dell'ordine --}}
-                                <td><a href="#">Piatti ordinati</a></td>
+                                {{-- Dettagli --}}
+                                <td><a href="{{ route('orders.show', $order) }}" class="btn btn-secondary">Dettagli</a></td>
                             </tr>
                         @endif
                     @endforeach
@@ -125,12 +125,8 @@
                         @endif
                         {{-- Totale --}}
                         <td>{{ $order->total }}</td>
-                        {{-- Recap dell'ordine --}}
-                        <td>
-                            @foreach ($order->dishes as $dish)
-                                {{ $dish->name }}
-                            @endforeach
-                        </td>
+                        {{-- Dettagli --}}
+                        <td><a href="{{ route('orders.show', $order) }}" class="btn btn-secondary">Dettagli</a></td>
                     </tr>
                 @endforeach
             @endif
