@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class RestaurantController extends Controller
 {
     public function index() {
-        /*if (request()->has('categories')) {
+        if (request()->has('categories')) {
             $restaurants = Restaurant::join('category_restaurant', 'restaurants.id', '=', 'category_restaurant.restaurant_id')
                                         ->join('categories', 'categories.id', '=', 'category_restaurant.category_id')
                                         ->whereIn('categories.id', request()->query('categories'))
@@ -18,7 +18,7 @@ class RestaurantController extends Controller
                                         ->get('restaurants.*');
         } else {
             $restaurants = Restaurant::with('categories')->limit(20)->get();
-        }*/
+        }
         $restaurants = Restaurant::with('categories')->limit(20)->get();
         return response()->json([
             'success' => true,
