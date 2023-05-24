@@ -19,7 +19,7 @@ class RestaurantController extends Controller
         } else {
             $restaurants = Restaurant::with('categories')->limit(20)->get();
         }
-        $restaurants = Restaurant::with('categories')->limit(20)->get();
+        // $restaurants = Restaurant::with('categories')->limit(20)->get();
         return response()->json([
             'success' => true,
             'results' => $restaurants
