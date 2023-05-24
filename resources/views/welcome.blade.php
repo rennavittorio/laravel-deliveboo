@@ -23,7 +23,7 @@
     @endif
     @else
     <h1 class="my-5 text-center">
-        Benvenuto nella tua dashboard <span class="badge bg-warning">{{ Auth::user()->name }}</span>
+        Benvenuto nella tua dashboard <span class="badge bg-warning">{{ $restaurant->name }}</span>
     </h1>
 
     <div class="wrapper d-flex justify-content-center align-items-center gap-3">

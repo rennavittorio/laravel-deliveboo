@@ -38,8 +38,6 @@ class RegisteredUserController extends Controller
     public function store(Request $request, Faker $faker): RedirectResponse
     {
 
-        // dd($request);
-
         //VALIDO I DATI DELLA REQUEST
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -62,11 +60,10 @@ class RegisteredUserController extends Controller
         ]);
 
         //CREO REST
-        //$picsum_img = 'https://picsum.photos/200';
         $restaurant = new Restaurant();
 
         $restaurant->name = $request->restaurant_name;
-        $restaurant->address = $request->address;
+        $restaurant->address = $request->address; //TODO - STANDARDIZZARE INPUT ADDRESS (con concat dati input)
         $restaurant->slug = Str::slug($restaurant->name . '-' . $restaurant->address);
         $restaurant->vat =  $request->vat;
         $restaurant->user_id = $user->id;
@@ -74,19 +71,20 @@ class RegisteredUserController extends Controller
         if ($request->hasFile('img')) {
             $cover_path = Storage::put('uploads', $request['img']);
             $restaurant->img = $cover_path;
-        }; //TODO - INSERIRE ELSE IN CASO NON VENGA CARICATA IMG
+        } else {
+            $restaurant->img = 'profile-default.png'; //in realtà l'img è required, valutare se tenere
+        }
 
         $restaurant->save();
 
-        if (isset($request['categories'])) { //se l'array tags è presente (non null)
-            $restaurant->categories()->attach($request['categories']); //attacchiamo l'array di tag al post
+        if (isset($request['categories'])) {
+            $restaurant->categories()->attach($request['categories']);
         }
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
-        //TODO - CAPIRE COME PASSARE AD HOMEPAGE I DATI DEL RISTORANTE
+        return redirect(RouteServiceProvider::HOME); //passo i dati restaurant da rotta web-php
     }
 }

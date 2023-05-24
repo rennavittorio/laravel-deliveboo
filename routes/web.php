@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Restaurant;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    if (Auth::user()) { //controllo se user è loggato, altrimenti rimanda errore al logout
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first(); //prendo i dati
+        return view('welcome', compact('restaurant')); //li mando a 'welcome'
+    }
+
     return view('welcome');
 });
 
