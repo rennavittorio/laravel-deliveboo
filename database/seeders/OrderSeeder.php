@@ -64,7 +64,7 @@ class OrderSeeder extends Seeder
                     ]
                 ],
                 'total' => 18.50,
-                'status' => 0,
+                'status' => 1,
                 'first_name' => 'Adriano',
                 'last_name' => 'Grimaldi',
                 'email' => 'adriano@gmail.com',
@@ -80,7 +80,7 @@ class OrderSeeder extends Seeder
                     ]
                 ],
                 'total' => 16.00,
-                'status' => 1,
+                'status' => 0,
                 'first_name' => 'Gialuca',
                 'last_name' => 'Lomarco',
                 'email' => 'gianluca@gmail.com',

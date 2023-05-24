@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Restaurant;
+use App\Models\Dish;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use Illuminate\Support\Facades\Auth; //auth
 
 class OrderController extends Controller
 {
@@ -15,7 +18,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('created_at', 'desc')->get(); //prendo gli ordini
+        $user = Auth::user(); //utente
+        $restaurant = Restaurant::find($user->id); //prendo il ristorante dell'utente
+        $orders = Order::join('dish_order', 'orders.id', '=', 'dish_order.order_id')
+                ->join('dishes', 'dishes.id', '=', 'dish_order.dish_id')
+                ->join('restaurants', 'restaurants.id', '=', 'dishes.restaurant_id')
+                ->where('dishes.restaurant_id', '=', $restaurant->id)
+                ->distinct()
+                ->get('orders.*'); //prendo gli ordini collegati al ristorante dell'utente
         return view('orders.index', compact('orders')); //restituisco la vista index
     }
 

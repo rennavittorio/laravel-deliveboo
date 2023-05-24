@@ -126,7 +126,11 @@
                         {{-- Totale --}}
                         <td>{{ $order->total }}</td>
                         {{-- Recap dell'ordine --}}
-                        <td><a href="#">Piatti ordinati</a></td>
+                        <td>
+                            @foreach ($order->dishes as $dish)
+                                {{ $dish->name }}
+                            @endforeach
+                        </td>
                     </tr>
                 @endforeach
             @endif
