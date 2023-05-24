@@ -32,7 +32,7 @@
                 Visualizza i tuoi <span class="text-high"> piatti </span>
             </div>
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('orders.index') }}">
             <div class="card d-flex justify-content-center align-items-center text-center">
                 Visualizza i tuoi <span class="text-high"> ordini </span>
             </div>
