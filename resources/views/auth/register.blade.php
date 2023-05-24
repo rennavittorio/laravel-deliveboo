@@ -17,8 +17,9 @@
 
                             <div class="col-6">
 
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Nome</label>
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" 
+                                <label for="name" class="col-md-4 col-form-label text-md-right required-input">Nome</label>
+                                <input
+                                id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" 
                                 placeholder="eg. Mario Rossi" required autocomplete="name" autofocus
                                 maxlength="255"
                                 >
@@ -32,7 +33,7 @@
                             </div>
                             <div class="col-6">
 
-                                <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right required-input">Email</label>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
                                 name="email" value="{{ old('email') }}" placeholder="eg. mario.rossi@mail.com" required autocomplete="email"
                                 maxlength="255"
@@ -52,7 +53,7 @@
                         <div class="mb-4 row">
                             <div class="col-6">
 
-                                <label for="password" class="col-form-label text-md-right">Nuova Password</label>
+                                <label for="password" class="col-form-label text-md-right required-input">Nuova Password</label>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
                                 name="password" placeholder="Inserisci una password di almeno 8 caratteri" required autocomplete="new-password"
                                 maxlength="255" minlength="8"
@@ -67,7 +68,7 @@
 
                             <div class="col-6">
 
-                                <label for="password-confirm" class="col-form-label text-md-right">Conferma Nuova Password</label>
+                                <label for="password-confirm" class="col-form-label text-md-right required-input">Conferma Nuova Password</label>
                                 <input id="password-confirm" type="password" class="form-control"
                                 name="password_confirmation" placeholder="Inserisci nuovamente la tua password" required autocomplete="new-password"
                                 maxlength="255" minlength="8"
@@ -84,7 +85,7 @@
 
                             <div class="col-12 mb-4">
 
-                                <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">Nome Ristorante</label>
+                                <label for="restaurant_name" class="col-md-4 col-form-label text-md-right required-input">Nome Ristorante</label>
                                 <input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror" 
                                 name="restaurant_name" value="{{ old('restaurant_name') }}" placeholder="eg. Pizzeria da Mario" required autocomplete="restaurant_name" autofocus
                                 maxlength="100"
@@ -100,7 +101,7 @@
 
                             <div class="col-12 mb-2">
 
-                                <label for="img" class="form-label">Immagine</label>
+                                <label for="img" class="form-label required-input">Immagine</label>
                                 <input type="file" class="form-control" id="url" name="img" value="">
                                 @error('img')
                                     <div class="text-danger">{{ $message }}</div>
@@ -111,7 +112,7 @@
                         </div>
 
                         <div class="mb-2 row">
-                            <label class="form-label">Categorie</label>
+                            <label class="form-label required-input">Categorie</label>
                             <ul class="d-flex flex-wrap gap-2">
 
                                 @foreach ($category_ids as $category)
@@ -133,7 +134,7 @@
 
                             <div class="col-6">
 
-                                <label for="address" class="col-md-4 col-form-label text-md-right">Indirizzo</label>
+                                <label for="address" class="col-md-4 col-form-label text-md-right required-input">Indirizzo</label>
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
                                 name="address" value="{{ old('address') }}" placeholder="eg. Via del Mario, 15" required autocomplete="name" autofocus
                                 maxlength="255"
@@ -148,7 +149,7 @@
                             </div>
                             <div class="col-6">
 
-                                <label for="vat" class="col-md-4 col-form-label text-md-right">P.IVA</label>
+                                <label for="vat" class="col-md-4 col-form-label text-md-right required-input">P.IVA</label>
                                 <input id="vat" type="text" class="form-control @error('vat') is-invalid @enderror"
                                 name="vat" value="{{ old('vat') }}" placeholder="eg. 12345678900" required autocomplete="vat"
                                 maxlength="13" minlength="13"
