@@ -14,7 +14,26 @@ img {
 //layout
 .navbar {
     background-color: #FF6D00;
+
+    .logo-sm {
+        display: block;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    @media  screen and (min-width: 556px) {
+        .logo-sm {
+            display: none;
+        }
+    
+        .logo {
+            display: block;
+        }
+    }
 }
+
 
 .welcome .card {
     width: 300px;

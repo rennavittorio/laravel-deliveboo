@@ -27,6 +27,9 @@
                     <div class="logo">
                         <img src="../logo-deliveboo.png" alt="" style="width:100px">
                     </div>
+                    <div class="logo-sm">
+                        <img src="../logo-deliveboo-sm.png" alt="" style="width:50px">
+                    </div>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
