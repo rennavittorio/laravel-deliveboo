@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all(); //prendo gli ordini
+        $orders = Order::orderBy('created_at', 'desc')->get(); //prendo gli ordini
         return view('orders.index', compact('orders')); //restituisco la vista index
     }
 

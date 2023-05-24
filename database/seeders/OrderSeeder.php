@@ -28,7 +28,7 @@ class OrderSeeder extends Seeder
                     ]
                 ],
                 'total' => 10.00,
-                'status' => 0,
+                'status' => 1,
                 'first_name' => 'Mauro',
                 'last_name' => 'Formisano',
                 'email' => 'mauro@gmail.com',
@@ -80,7 +80,7 @@ class OrderSeeder extends Seeder
                     ]
                 ],
                 'total' => 16.00,
-                'status' => 0,
+                'status' => 1,
                 'first_name' => 'Gialuca',
                 'last_name' => 'Lomarco',
                 'email' => 'gianluca@gmail.com',
@@ -100,7 +100,7 @@ class OrderSeeder extends Seeder
                     ]
                 ],
                 'total' => 25.50,
-                'status' => 0,
+                'status' => 1,
                 'first_name' => 'Giuseppe',
                 'last_name' => 'Funicello',
                 'email' => 'giuseppe@gmail.com',
