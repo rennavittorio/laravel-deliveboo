@@ -22,8 +22,14 @@
 
     @endif
     @else
+    <div class="wrapper-profile d-flex flex-column gap-2 justify-content-center align-items-center">
+        <div class="rest-img">
+            <img src="{{ asset('storage/'. $restaurant->img) }}" alt="">
+        </div>
+        <h3 class="text-center">{{ $restaurant->name }}</h3>
+    </div>
     <h1 class="my-5 text-center">
-        Benvenuto nella tua dashboard <span class="badge bg-warning">{{ $restaurant->name }}</span>
+        Benvenuto nella tua dashboard
     </h1>
 
     <div class="wrapper d-flex justify-content-center align-items-center gap-3">
