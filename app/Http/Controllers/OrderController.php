@@ -23,6 +23,7 @@ class OrderController extends Controller
                 ->join('dishes', 'dishes.id', '=', 'dish_order.dish_id')
                 ->join('restaurants', 'restaurants.id', '=', 'dishes.restaurant_id')
                 ->where('dishes.restaurant_id', '=', $restaurant->id)
+                ->orderBy('created_at', 'desc')
                 ->distinct()
                 ->get('orders.*'); //prendo gli ordini collegati al ristorante dell'utente
         return view('orders.index', compact('orders')); //restituisco la vista index
