@@ -38,66 +38,53 @@ class RegisteredUserController extends Controller
     public function store(Request $request, Faker $faker): RedirectResponse
     {
 
-        // dd($request);
-
+        //VALIDO I DATI DELLA REQUEST
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+
+            //validazioni per restaurant input
+            'restaurant_name' => ['required', 'string', 'max:100'],
+            'img' => ['required', 'image'],
+            'categories' => ['exists:categories,id'],
+            'address' => ['required', 'max:255'],
+            'vat' => ['required', 'max:13', 'min:13', 'unique:' . Restaurant::class]
         ]);
 
+        //CREO USER
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        $picsum_img = 'https://picsum.photos/200';
-
+        //CREO REST
         $restaurant = new Restaurant();
 
-        $restaurant->name = $request->name;
-        $restaurant->address = $request->address;
+        $restaurant->name = $request->restaurant_name;
+        $restaurant->address = $request->address; //TODO - STANDARDIZZARE INPUT ADDRESS (con concat dati input)
         $restaurant->slug = Str::slug($restaurant->name . '-' . $restaurant->address);
         $restaurant->vat =  $request->vat;
         $restaurant->user_id = $user->id;
 
         if ($request->hasFile('img')) {
             $cover_path = Storage::put('uploads', $request['img']);
-            $request['img'] = $cover_path;
-        };
-
-        $restaurant->img = $request->img ?? $picsum_img;
+            $restaurant->img = $cover_path;
+        } else {
+            $restaurant->img = 'profile-default.png'; //in realtà l'img è required, valutare se tenere
+        }
 
         $restaurant->save();
 
-        if (isset($request['categories'])) { //se l'array tags è presente (non null)
-            $restaurant->categories()->attach($request['categories']); //attacchiamo l'array di tag al post
+        if (isset($request['categories'])) {
+            $restaurant->categories()->attach($request['categories']);
         }
-
-        //TO-DO: get real data from form
-        //fake-iamo la registrazione del rest con quella dell'user
-        // $picsum_img = 'https://picsum.photos/200';
-        // $category_ids = Category::all()->pluck('id')->all();
-
-        // $restaurant = new Restaurant();
-
-        // $restaurant->name = 'pizza' . ($user->id);
-        // $restaurant->img = $picsum_img;
-        // $restaurant->address = $faker->address();
-        // $restaurant->slug = Str::slug($restaurant->name . '-' . $restaurant->address);
-        // $restaurant->vat =  $faker->bothify('#######-###-#');
-        // $restaurant->user_id = $user->id;
-
-        // $restaurant->save();
-
-        // $restaurant->categories()->attach($faker->randomElements($category_ids, rand(1, 2)));
-        //end fake
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME); //passo i dati restaurant da rotta web-php
     }
 }

@@ -14,7 +14,35 @@ img {
 //layout
 .navbar {
     background-color: #FF6D00;
+
+    .logo-sm {
+        display: block;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    @media  screen and (min-width: 556px) {
+        .logo-sm {
+            display: none;
+        }
+    
+        .logo {
+            display: block;
+        }
+    }
 }
+
+//welcome-page
+.rest-img {
+    max-width: 200px;
+    overflow: hidden;
+    border-radius: 999px;
+    object-fit: cover;
+    object-position: center;
+}
+
 
 .welcome .card {
     width: 300px;
@@ -32,6 +60,14 @@ img {
         color: #5A189A;
     }
 
+}
+
+
+//register page
+.required-input::after {
+    content: ' *';
+    display: inline;
+    color: red;
 }
 
 //index-page
