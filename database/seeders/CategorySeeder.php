@@ -26,9 +26,11 @@ class CategorySeeder extends Seeder
             'Argentino', 
             'Internazionale', 
             'Pesce', 
-            'Carne', 
+            'Carne',
             'Pizza',
-            'Sushi'
+            'Sushi',
+            'Pasta',
+            'Arabo'
         ];
         //Ciclo
         foreach($categories as $category) {

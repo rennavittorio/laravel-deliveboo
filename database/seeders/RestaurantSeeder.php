@@ -28,7 +28,7 @@ class RestaurantSeeder extends Seeder
                 'slug' => Str::slug('Pizzeria Catullo' . '-' . 'Corso Moncalieri, 176, 10133 Torino TO'),
                 'address' => 'Corso Moncalieri, 176, 10133 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
-                'category_ids' => [1, 9, 10, 11]
+                'category_ids' => [1, 9, 10, 11, 12]
             ],
             [
                 'name' => 'Miyo Sushi',
@@ -65,6 +65,51 @@ class RestaurantSeeder extends Seeder
                 'address' => 'Via Principi d\'Acaja, 61, 10100 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
                 'category_ids' => [3, 9, 10]
+            ],
+            [
+                'name' => 'Plin & Tajarin',
+                'user_id' => 6,
+                'img' => 'plin_e_tajarin.png',
+                'slug' => Str::slug('Plin & Tajarin' . '-' . 'Via Goffredo Casalis, 10138 Torino TO'),
+                'address' => 'Via Goffredo Casalis, 10138 Torino TO',
+                'vat' => $faker->bothify('#######-###-#'),
+                'category_ids' => [1, 9, 13]
+            ],
+            [
+                'name' => 'Bomaki',
+                'user_id' => 7,
+                'img' => 'bomaki.svg',
+                'slug' => Str::slug('Bomaki' . '-' . 'Murazzi del Po Gipo Farassino, 23, 10123 Torino TO'),
+                'address' => 'Murazzi del Po Gipo Farassino, 23, 10123 Torino TO',
+                'vat' => $faker->bothify('#######-###-#'),
+                'category_ids' => [4, 9, 12]
+            ],
+            [
+                'name' => 'Mr Shawarma',
+                'user_id' => 8,
+                'img' => 'mr_shawarma.jpg',
+                'slug' => Str::slug('Mr Shawarma' . '-' . 'Via Gambasca, 4F, 10138 Torino TO'),
+                'address' => 'Via Gambasca, 4F, 10138 Torino TO',
+                'vat' => $faker->bothify('#######-###-#'),
+                'category_ids' => [10, 11, 14]
+            ],
+            [
+                'name' => 'Jaipur',
+                'user_id' => 9,
+                'img' => 'jaipur.png',
+                'slug' => Str::slug('Jaipur' . '-' . 'Corso Orbassano 230, 10137 Torino Italia'),
+                'address' => 'Corso Orbassano 230, 10137 Torino Italia',
+                'vat' => $faker->bothify('#######-###-#'),
+                'category_ids' => [5, 9, 10]
+            ],
+            [
+                'name' => 'Smith\'s British',
+                'user_id' => 10,
+                'img' => 'smiths_british.png',
+                'slug' => Str::slug('Smith\'s British' . '-' . 'Via Virle, 19, 10138 Torino TO'),
+                'address' => 'Via Virle, 19, 10138 Torino TO',
+                'vat' => $faker->bothify('#######-###-#'),
+                'category_ids' => [8, 9, 10]
             ]
         ];
         //Ciclo
