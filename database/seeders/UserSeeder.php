@@ -43,6 +43,31 @@ class UserSeeder extends Seeder
                 'name' => 'Stefano',
                 'email' => 'stefano@gmail.com',
                 'password' => Hash::make('stefano')
+            ],
+            [
+                'name' => 'Sara',
+                'email' => 'sara@gmail.com',
+                'password' => Hash::make('sara')
+            ],
+            [
+                'name' => 'Chiara',
+                'email' => 'chiara@gmail.com',
+                'password' => Hash::make('chiara')
+            ],
+            [
+                'name' => 'Lisa',
+                'email' => 'lisa@gmail.com',
+                'password' => Hash::make('lisa')
+            ],
+            [
+                'name' => 'Angela',
+                'email' => 'angela@gmail.com',
+                'password' => Hash::make('angela')
+            ],
+            [
+                'name' => 'Maria',
+                'email' => 'maria@gmail.com',
+                'password' => Hash::make('maria')
             ]
         ];
         //Ciclo
