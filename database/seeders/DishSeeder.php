@@ -141,7 +141,7 @@ class DishSeeder extends Seeder
             ],
             [
                 'name' => 'Pizza Kebab',
-                'img' => 'pizza_kebab.jpg',
+                'img' => 'pizza_kebab.jpeg',
                 'description' => 'Pizza con il kebab',
                 'price' => 7.50,
                 'is_visible' => 1,
