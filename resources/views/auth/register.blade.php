@@ -7,6 +7,10 @@
             <div class="card">
                 <div class="card-header">Registrazione nuovo utente</div>
 
+                {{-- <div>
+                    {{ dd(request()->session()) }}
+                </div> --}}
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
@@ -69,7 +73,7 @@
                             <div class="col-6">
 
                                 <label for="password-confirm" class="col-form-label text-md-right required-input">Conferma Nuova Password</label>
-                                <input id="password-confirm" type="password" class="form-control"
+                                <input id="password-confirm" type="password" class="form-control @error('password-confirm') is-invalid @enderror"
                                 name="password_confirmation" placeholder="Inserisci nuovamente la tua password" required autocomplete="new-password"
                                 maxlength="255" minlength="8"
                                 >
