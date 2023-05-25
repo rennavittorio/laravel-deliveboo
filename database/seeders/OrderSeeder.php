@@ -108,6 +108,98 @@ class OrderSeeder extends Seeder
                 'address' => 'Via Montebello, 20, Torino TO',
                 'postal_code' => '10124'
             ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 11,
+                        'quantity' => 2
+                    ],
+                    [
+                        'id' => 12,
+                        'quantity' => 2
+                    ]
+                ],
+                'total' => 60,
+                'status' => 1,
+                'first_name' => 'Luigi',
+                'last_name' => 'Micco',
+                'email' => 'luigi@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Piazza Carducci, 169/173, Torino TO',
+                'postal_code' => '10126'
+            ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 14,
+                        'quantity' => 1
+                    ]
+                ],
+                'total' => 50,
+                'status' => 1,
+                'first_name' => 'Riccardo',
+                'last_name' => 'Scrizzi',
+                'email' => 'riccardo@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Corso Giambattista Beccaria, 4, Torino TO',
+                'postal_code' => '10122'
+            ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 15,
+                        'quantity' => 2
+                    ]
+                ],
+                'total' => 15,
+                'status' => 0,
+                'first_name' => 'Emanuele',
+                'last_name' => 'Paratore',
+                'email' => 'emanuele@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Piazza Gran Madre di Dio, 4, Torino TO',
+                'postal_code' => '10131'
+            ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 17,
+                        'quantity' => 1
+                    ],
+                    [
+                        'id' => 18,
+                        'quantity' => 2
+                    ]
+                ],
+                'total' => 10.50,
+                'status' => 0,
+                'first_name' => 'Leica',
+                'last_name' => 'Florian',
+                'email' => 'leica@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Corso Novara, 135, Torino TO',
+                'postal_code' => '10153'
+            ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 19,
+                        'quantity' => 2
+                    ],
+                    [
+                        'id' => 20,
+                        'quantity' => 2
+                    ]
+                ],
+                'total' => 69,
+                'status' => 1,
+                'first_name' => 'Valentina',
+                'last_name' => 'Ferrari',
+                'email' => 'valentina@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Via Bologna, 32, Torino TO',
+                'postal_code' => '10152'
+            ],
         ];
         //Ciclo
         foreach ($orders as $order) {
