@@ -109,7 +109,7 @@ class RestaurantSeeder extends Seeder
                 'slug' => Str::slug('Smith\'s British' . '-' . 'Via Virle, 19, 10138 Torino TO'),
                 'address' => 'Via Virle, 19, 10138 Torino TO',
                 'vat' => $faker->bothify('#######-###-#'),
-                'category_ids' => [8, 10]
+                'category_ids' => [8, 9, 10]
             ]
         ];
         //Ciclo
