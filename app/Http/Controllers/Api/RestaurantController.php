@@ -19,7 +19,7 @@ class RestaurantController extends Controller
                                         ->with('dishes', 'categories')
                                         ->get('restaurants.*');
         } else { //altrimenti
-            $restaurants = Restaurant::with('categories')->limit(20)->get(); //prendo tutti i ristoranti dal database in paginati
+            $restaurants = Restaurant::with('dishes', 'categories')->limit(20)->get(); //prendo tutti i ristoranti dal database in paginati
         }
         //Invio la risposta JSON
         return response()->json([
