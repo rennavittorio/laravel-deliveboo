@@ -151,7 +151,7 @@ class OrderSeeder extends Seeder
                         'quantity' => 2
                     ]
                 ],
-                'total' => 15,
+                'total' => 11,
                 'status' => 0,
                 'first_name' => 'Emanuele',
                 'last_name' => 'Paratore',
