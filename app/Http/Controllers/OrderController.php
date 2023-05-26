@@ -55,7 +55,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreOrderRequest $request)
-    {
+    {   
         //Gateway
         $gateway = new \Braintree\Gateway([
             'environment' => getenv('BT_ENVIRONMENT'),
