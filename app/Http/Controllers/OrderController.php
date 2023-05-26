@@ -72,7 +72,8 @@ class OrderController extends Controller
                 'id' => 1,
                 'price' => 5,
                 'quantity' => 2
-            ],[
+            ],
+            [
                 'id' => 2,
                 'price' => 7,
                 'quantity' => 2
@@ -113,7 +114,7 @@ class OrderController extends Controller
                 'quantity' => $dish['quantity'] //quantità del piatto ordinato
             ]);
         }
-
+        //Transazione
         $result = $gateway->transaction()->sale([
             'amount' => $amount, //quantità
             'paymentMethodNonce' => $nonce,//nonce
@@ -135,20 +136,18 @@ class OrderController extends Controller
                 'submitForSettlement' => true
             ]
         ]);
-        
+        //Se la transazione avviene con successo
         if ($result->success) {
             $transaction = $result->transaction;
             $newOrder->status = 1; //cambio la stato dell'ordine in successo
             $newOrder->save(); //invio le informazio al database
             //header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
             return back()->with('success_message', 'Transaction successful. The ID is: ' . $transaction->id);
-        } else {
+        } else { //altrimenti
             $errorString = "";
-        
             foreach($result->errors->deepAll() as $error) {
                 $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
             }
-        
             //$_SESSION["errors"] = $errorString;
             //header("Location: " . $baseUrl . "index.php");
             return back()->withErrors('An error occurred with the message: ' . $result->message);
