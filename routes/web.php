@@ -4,6 +4,7 @@ use App\Http\Controllers\DishController; //piatti
 use App\Http\Controllers\OrderController; //ordini
 use Illuminate\Http\Request; //request
 use App\Models\Order; //model
+use Illuminate\Support\Facades\DB; //DB
 use App\Http\Controllers\ProfileController;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
@@ -70,14 +71,34 @@ Route::post("/checkout", function(Request $request) {
         'privateKey' => getenv('BT_PRIVATE_KEY')
     ]);
 
-    $amount = $request->amount; //quantità
+    $amount = 0; //prezzo finale
+
+    //Piatti fake
+    $dishes = [
+        [
+            'id' => 1,
+            'price' => 5,
+            'quantity' => 2
+        ],[
+            'id' => 2,
+            'price' => 7,
+            'quantity' => 2
+        ]
+    ];
+
+    //Calcolo il prezzo finale
+    foreach ($dishes as $dish) {
+        $amount += $dish['price'] * $dish['quantity'];
+    }
+
+    
     $nonce = $request->payment_method_nonce; //nonce
-    $firstName = isset($request->first_name) ? $request->first_name : "Mario"; //nome
-    $lastName = isset($request->last_name) ? $request->last_name : "Rossi"; //cognome
-    $email = isset($request->email) ? $request->email : "mariorossi@gmail.com"; //email
-    $phone = isset($request->phone) ? $request->phone : "1234567890"; //telefono
-    $address = isset($request->address) ? $request->address : "Via Genova 1"; //indirizzo
-    $postalCode = isset($request->postalCode) ? $request->postalCode : "10100"; //codice postale
+    $firstName = $request->first_name; //nome
+    $lastName = $request->last_name; //cognome
+    $email = $request->email; //email
+    $phone = $request->phone; //telefono
+    $address = $request->address; //indirizzo
+    $postalCode = $request->postal_code; //codice postale
 
     $newOrder = new Order(); //nuovo ordine
     $newOrder->total = $amount; //prezzo totale dell'ordine
@@ -89,6 +110,16 @@ Route::post("/checkout", function(Request $request) {
     $newOrder->address = $address; //indirizzo del cliente
     $newOrder->postal_code = $postalCode; //codice postale del cliente
     $newOrder->save(); //salvo i dati nel database
+
+    //Inserisco i dati nella tabella ponte tra gli ordini e i piatti
+    foreach ($dishes as $dish) {
+        //Inserimento nel database
+        DB::table('dish_order')->insert([
+            'dish_id' => $dish['id'], //id del piatto
+            'order_id' => $newOrder->id, //id dell'ordine
+            'quantity' => $dish['quantity'] //quantità del piatto ordinato
+        ]);
+    }
 
     $result = $gateway->transaction()->sale([
         'amount' => $amount, //quantità

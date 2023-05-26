@@ -82,13 +82,6 @@
                 <div>
                     <input type="text" name="postal_code">
                 </div>
-                {{-- Quantità --}}
-                <label for="amount">
-                    <span class="input-label">Amount</span>
-                    <div class="input-wrapper amount-wrapper">
-                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
-                    </div>
-                </label>
                 {{-- Possessore della carta --}}
                 <label for="cardholder-name">Card holder</label>
                 <div id="cardholder-name"></div>    
