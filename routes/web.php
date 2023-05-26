@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\DishController; //piatti
 use App\Http\Controllers\OrderController; //ordini
-use Illuminate\Http\Request; //request
-use App\Models\Order; //model
-use Illuminate\Support\Facades\DB; //DB
+// use Illuminate\Http\Request; //request
+// use App\Models\Order; //model
+// use Illuminate\Support\Facades\DB; //DB
 use App\Http\Controllers\ProfileController;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
@@ -47,7 +47,7 @@ Route::resource('dishes', DishController::class);
 Route::resource('orders', OrderController::class);
 
 //Hosted
-Route::get('/hosted', function () {
+/*Route::get('/hosted', function () {
     //Gateway
     $gateway = new Braintree\Gateway([
         'environment' => getenv('BT_ENVIRONMENT'),
@@ -59,10 +59,10 @@ Route::get('/hosted', function () {
     return view('hosted', [
         'token' => $token, //token
     ]);
-});
+});*/
 
 //Braintree Checkout
-Route::post("/checkout", function(Request $request) {
+/*Route::post("/checkout", function(Request $request) {
     //Gateway
     $gateway = new Braintree\Gateway([
         'environment' => getenv('BT_ENVIRONMENT'),
@@ -160,6 +160,6 @@ Route::post("/checkout", function(Request $request) {
         //header("Location: " . $baseUrl . "index.php");
         return back()->withErrors('An error occurred with the message: ' . $result->message);
     }
-});
+});*/
 
 require __DIR__ . '/auth.php';
