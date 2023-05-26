@@ -118,7 +118,7 @@ class DishSeeder extends Seeder
             [
                 'name' => 'Special Box 32pz',
                 'img' => 'special_box.jpg',
-                'description' => '(2 uramaki special, 2 uramaki regular) Astice gratinato al mango, Carnaval, tonno e pistacchio, salmone alla fiamma',
+                'description' => 'Astice gratinato al mango, Carnaval, tonno e pistacchio, salmone alla fiamma',
                 'price' => 60,
                 'is_visible' => 1,
                 'restaurant_id' => 7
@@ -126,7 +126,7 @@ class DishSeeder extends Seeder
             [
                 'name' => 'Mix Box 32pz',
                 'img' => 'mix_box.jpg',
-                'description' => '(1 uramaki special, 3 uramaki regular) Sweet & sour salmon, Astice gratinato, Dragon Messicano, Extra spicy tonno',
+                'description' => 'Sweet & sour salmon, Astice gratinato, Dragon Messicano, Extra spicy tonno',
                 'price' => 50,
                 'is_visible' => 1,
                 'restaurant_id' => 7
@@ -166,7 +166,7 @@ class DishSeeder extends Seeder
             [
                 'name' => 'Steak Tartare',
                 'img' => 'steak_tartare.jpg',
-                'description' => 'Filetto di Angus Irlandese battuto al coltello & condito. Servito con maionese alla senape e tuorlo d\'uovo bio',
+                'description' => 'Filetto di Angus Irlandese battuto al coltello & condito.',
                 'price' => 14.50,
                 'is_visible' => 1,
                 'restaurant_id' => 10
@@ -174,7 +174,7 @@ class DishSeeder extends Seeder
             [
                 'name' => 'Fish & Chips',
                 'img' => 'fish_and_chips.jpg',
-                'description' => 'Filetto di merluzzo nella tradizionale pastella di birra rossa. Servito patate fritte.',
+                'description' => 'Filetto di merluzzo in pastella di birra rossa. Servito patate fritte.',
                 'price' => 20,
                 'is_visible' => 1,
                 'restaurant_id' => 10
