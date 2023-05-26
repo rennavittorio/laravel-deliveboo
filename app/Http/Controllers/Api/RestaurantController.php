@@ -13,7 +13,8 @@ class RestaurantController extends Controller
         if (request()->has('categories')) {
             //Effetto la ricerca sui ristoranti con le categorie desiderate
             $restaurants = Restaurant::join('category_restaurant', 'restaurants.id', '=', 'category_restaurant.restaurant_id')
-                                        ->whereIn('category_restaurant.category_id', request()->query('categories'))
+                                        ->join('categories', 'categories.id', '=', 'category_restaurant.category_id')
+                                        ->whereIn('categories.name', request()->query('categories'))
                                         ->groupBy('restaurants.id')
                                         ->havingRaw('COUNT(DISTINCT category_restaurant.category_id) = ?', [count(request()->query('categories'))])
                                         ->with('dishes', 'categories')
