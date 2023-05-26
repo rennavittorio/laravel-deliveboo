@@ -72,7 +72,6 @@ Route::post("/checkout", function(Request $request) {
 
     $amount = $request->amount; //quantità
     $nonce = $request->payment_method_nonce; //nonce
-    $date = date("Y-m-d h:i:s"); //data
     $firstName = isset($request->first_name) ? $request->first_name : "Mario"; //nome
     $lastName = isset($request->last_name) ? $request->last_name : "Rossi"; //cognome
     $email = isset($request->email) ? $request->email : "mariorossi@gmail.com"; //email
@@ -81,7 +80,8 @@ Route::post("/checkout", function(Request $request) {
     $postalCode = isset($request->postalCode) ? $request->postalCode : "10100"; //codice postale
 
     $newOrder = new Order(); //nuovo ordine
-    $newOrder->date = $date; //data
+    $newOrder->total = $amount; //prezzo totale dell'ordine
+    $newOrder->status = 0; //stato del pagamento dell'ordine
     $newOrder->first_name = $firstName; //nome del cliente
     $newOrder->last_name = $lastName; //cognome del cliente
     $newOrder->email = $email; //email del cliente
