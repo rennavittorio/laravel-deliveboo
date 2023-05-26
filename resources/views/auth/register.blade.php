@@ -116,13 +116,13 @@
                         </div>
 
                         <div class="mb-2 row">
-                            <label class="form-label required-input">Categorie</label>
+                            <label class="form-label required-input" id="restaurant_categories_title">Categorie</label>
                             <ul class="d-flex flex-wrap gap-2">
 
                                 @foreach ($category_ids as $category)
                                     <div class="form-check">
                                         <input 
-                                        class="form-check-input" type="checkbox" value="{{ $category->id }}" id="{{ $category->id }}" name="categories[]"
+                                        class="form-check-input categories" type="checkbox" value="{{ $category->id }}" id="{{ $category->id }}" name="categories[]"
                                         @checked( in_array($category->id, old('categories', [])) )
                                         >
                                         <label class="form-check-label" for="{{ $category->id }}" name="categories[]">
