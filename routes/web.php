@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DishController; //piatti
 use App\Http\Controllers\OrderController; //ordini
+use Illuminate\Http\Request; //request
+use App\Models\Order; //model
 use App\Http\Controllers\ProfileController;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
