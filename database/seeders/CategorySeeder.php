@@ -67,7 +67,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'name' => 'Pasta',
-                'img' => 'pastajpgA'
+                'img' => 'pasta.jpg'
             ],
             [
                 'name' => 'Arabo',
