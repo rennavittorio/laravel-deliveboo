@@ -77,8 +77,8 @@ class CategorySeeder extends Seeder
         //Ciclo
         foreach($categories as $category) {
             $newCategory = new Category(); //nuova categoria
-            $newCategory->img = $category->img; //nome della categoria
-            $newCategory->name = $category->name; //nome della categoria
+            $newCategory->img = $category['img']; //nome della categoria
+            $newCategory->name = $category['name']; //nome della categoria
             $newCategory->save(); //invio i dati dal database
         }
     }
