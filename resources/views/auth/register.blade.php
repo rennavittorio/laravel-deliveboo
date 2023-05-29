@@ -173,7 +173,7 @@
 
                         <div class="mb-4 row">
                             <div class="">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="btn-sub">
                                     Registrati
                                 </button>
                             </div>
