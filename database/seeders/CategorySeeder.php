@@ -17,25 +17,68 @@ class CategorySeeder extends Seeder
     {
         //Categorie
         $categories = [
-            'Italiano', 
-            'Francese',
-            'Cinese', 
-            'Giapponese', 
-            'Indiano', 
-            'Messicano',
-            'Argentino', 
-            'Internazionale', 
-            'Pesce', 
-            'Carne',
-            'Pizza',
-            'Sushi',
-            'Pasta',
-            'Arabo'
+            [
+                'name' => 'Italiano',
+                'img' => 'italiano.jpg'
+            ],
+            [
+                'name' => 'Francese',
+                'img' => 'francese.jpg'
+            ],
+            [
+                'name' => 'Cinese',
+                'img' => 'cinese.jpg'
+            ],
+            [
+                'name' => 'Giapponese',
+                'img' => 'giapponese.jpg'
+            ],
+            [
+                'name' => 'Indiano',
+                'img' => 'indiano.jpg'
+            ],
+            [
+                'name' => 'Messicano',
+                'img' => 'messicano.jpg'
+            ],
+            [
+                'name' => 'Argentino',
+                'img' => 'argentina.jpg'
+            ],
+            [
+                'name' => 'Internazionale',
+                'img' => 'international.jpg'
+            ],
+            [
+                'name' => 'Pesce',
+                'img' => 'pesce.jpg'
+            ],
+            [
+                'name' => 'Carne',
+                'img' => 'carne.jpg'
+            ],
+            [
+                'name' => 'Pizza',
+                'img' => 'pizza.jpg'
+            ],
+            [
+                'name' => 'Sushi',
+                'img' => 'sushi.jpg'
+            ],
+            [
+                'name' => 'Pasta',
+                'img' => 'pastajpgA'
+            ],
+            [
+                'name' => 'Arabo',
+                'img' => 'arab.jpg'
+            ]
         ];
         //Ciclo
         foreach($categories as $category) {
             $newCategory = new Category(); //nuova categoria
-            $newCategory->name = $category; //nome della categoria
+            $newCategory->img = $category->img; //nome della categoria
+            $newCategory->name = $category->name; //nome della categoria
             $newCategory->save(); //invio i dati dal database
         }
     }
