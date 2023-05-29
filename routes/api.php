@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\RestaurantController;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
+
+//la rotta che rimanda al controller
+Route::post('/restaurants/payment', [RestaurantController::class, 'payment']);
 
 Route::get('/restaurants/{slug}', [RestaurantController::class, 'show']);
