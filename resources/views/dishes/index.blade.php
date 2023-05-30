@@ -27,14 +27,26 @@
             <img src="{{ asset('storage/'. $dish->img) }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ $dish->name }}</h5>
-                <p class="card-text">{{ $dish->description }}</p>
-                <div class="wrapper-footer-card d-flex justify-content-between align-items-center mt-auto">
+                <p class="card-text">
+                    <span class="fw-bold">Descrizione:</span> {{ $dish->description }}
+                </p>
+                <div class="wrapper-footer-card d-flex justify-content-between align-items-center mt-auto mb-5">
 
-                    <p class="card-text badge m-0 bg-warning">{{ $dish->price }}</p>
-                    <p class="card-text badge bg-danger">{{ $dish->is_visible }}</p>
+                    <p class="card-text m-0">
+                        <span class="fw-bold">Prezzo: </span>
+                        <span class="badge bg-success">{{ $dish->price }} €</span>
+                    </p>
+                    <p class="card-text m-0">
+                        <span class="fw-bold">Visibile: </span>
+                        @if($dish->is_visible)
+                            <span class="badge bg-success">Si</span>
+                        @else
+                            <span class="badge bg-danger">No</span>
+                        @endif
+                    </p>
 
                 </div>
-                <a class="btn btn-success my-2" href="{{ route('dishes.edit', $dish->id) }}">
+                <a class="btn btn-warning my-2" href="{{ route('dishes.edit', $dish->id) }}">
                     Edit
                 </a>
             </div>
