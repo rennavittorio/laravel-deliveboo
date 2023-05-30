@@ -32,34 +32,23 @@
         Benvenuto nella tua dashboard
     </h1>
 
-    <div class="wrapper d-flex justify-content-center align-items-center gap-3">
-        <div class="dish-wrapper">
-            <a class="nav-link" href="{{ route('dishes.index') }}">
-                <div class="card d-flex justify-content-center align-items-center text-center">
-                    Visualizza i tuoi <span class="text-high"> piatti </span>
-                </div>
-            </a>
-            <p>
-                Hai <span class="badge badge-sm bg-warning">{{ $total_dishes }}</span> piatti salvati
-            </p>
-            <p>
-                Di cui <span class="badge badge-sm bg-warning">{{ $total_dishes_visible }}</span> sono visibile ai clienti
-            </p>
+    <div class="wrapper d-flex flex-column justify-content-center align-items-center gap-3">
+        <div class="dish-wrapper col-6">
+            <div class="card p-3">
+                <p>
+                    Hai <span class="text-high text-warning">{{ $total_dishes }}</span> piatti salvati, di cui <span class="text-high text-warning">{{ $total_dishes_visible }}</span> sono visibili ai clienti
+                </p>
+                <a class="nav-link" href="{{ route('dishes.index') }}">Vai ai tuoi piatti</a>
+            </div>
         </div>
 
-        <div class="order-wrapper">
-            <a class="nav-link" href="{{ route('orders.index') }}">
-                <div class="card d-flex justify-content-center align-items-center text-center">
-                    Visualizza i tuoi <span class="text-high"> ordini </span>
-                </div>
-            </a>
-            <p>
-                Hai <span class="badge badge-sm bg-warning">{{ $total_orders }}</span> ordini
-            </p>
-            <p>
-                Di cui <span class="badge badge-sm bg-warning">{{ $total_orders_paid }}</span> pagati
-            </p>
-
+        <div class="order-wrapper col-6">
+            <div class="card p-3">
+                <p>
+                    Hai <span class="text-high text-warning">{{ $total_orders }}</span> ordini, di cui <span class="text-high text-warning">{{ $total_orders_paid }}</span> pagati
+                </p>
+                <a class="nav-link" href="{{ route('orders.index') }}">Vai ai tuoi ordini</a>
+            </div>
         </div>
     </div>
 

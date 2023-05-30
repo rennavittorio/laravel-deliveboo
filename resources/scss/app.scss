@@ -45,19 +45,26 @@ img {
 
 
 .welcome .card {
-    width: 300px;
-    height: 200px;
+    // width: 300px;
+    // height: 200px;
     font-size: 2rem;
-    background-color: #FF6D00;
-    color: white;
+    // background-color: #FF6D00;
+    border: 2px solid #FF6D00;
+    color: black;
 
     .text-high {
         font-weight: 700;
     }
 
-    &:hover {
-        background-color: #FF8500;
+    .nav-link {
+        font-size: 1.5rem;
+        font-style: italic;
+        text-decoration: underline;
         color: #5A189A;
+
+        &:hover{
+            color: #FF6D00;
+        }
     }
 
 }
