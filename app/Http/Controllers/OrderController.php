@@ -45,9 +45,9 @@ class OrderController extends Controller
             'privateKey' => getenv('BT_PRIVATE_KEY')
         ]);
         $token = $gateway->ClientToken()->generate(); //token
-        $order = Order::find(request()->query('order_id')); //cerco l'ordine
-        $total = $order->total; //prendo il prezzo del'ordine
-        return view('orders.create', compact('token', 'total')); //restituisco la vista create
+        // $order = Order::find(request()->query('order_id')); //cerco l'ordine
+        // $total = $order->total; //prendo il prezzo del'ordine
+        return view('orders.create', compact('token')); //restituisco la vista create
     }
 
     /**

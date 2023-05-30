@@ -62,7 +62,14 @@ Route::middleware('auth')->group(function () {
 Route::resource('dishes', DishController::class);
 
 //Ordini
-Route::resource('orders', OrderController::class);
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
+Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+
+Route::post('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+
+Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+
 
 //Hosted
 /*Route::get('/hosted', function () {

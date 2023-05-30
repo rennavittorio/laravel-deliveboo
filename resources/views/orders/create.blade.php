@@ -12,6 +12,7 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
+                background-color: #FF9100;
             }
             /* Container */
             .container {
@@ -23,6 +24,7 @@
                 height: 40px;
                 padding: 5px;
                 border: 1px solid black;
+                background-color: white;
             }
         </style>
     </head>
@@ -49,40 +51,36 @@
             <h1>
                 Pagamento
             </h1>
-            {{-- Prezzo da pagare --}}
-            <h2>
-                Prezzo totale: {{ $total }}€
-            </h2>
             {{-- Form --}}
             <form action="{{ route('orders.store') }}" id="payment-form" method="post">
                 @csrf
                 {{-- Nome --}}
                 <div>
-                    <input type="hidden" name="first_name" value="{{ request()->query('firstName') }}">
+                    <input type="hidden" name="first_name" value="{{ request()->firstName }}">
                 </div>
                 {{-- Cognome --}}
                 <div>
-                    <input type="hidden" name="last_name" value="{{ request()->query('lastName') }}">
+                    <input type="hidden" name="last_name" value="{{ request()->lastName }}">
                 </div>
                 {{-- Email --}}
                 <div>
-                    <input type="hidden" name="email" value="{{ request()->query('email') }}">
+                    <input type="hidden" name="email" value="{{ request()->email }}">
                 </div>
                 {{-- Telefono --}}
                 <div>
-                    <input type="hidden" name="phone" value="{{ request()->query('phone') }}">
+                    <input type="hidden" name="phone" value="{{ request()->phone }}">
                 </div>
                 {{-- Email --}}
                 <div>
-                    <input type="hidden" name="address" value="{{ request()->query('address') }}">
+                    <input type="hidden" name="address" value="{{ request()->address }}">
                 </div>
                 {{-- Codice postale --}}
                 <div>
-                    <input type="hidden" name="postal_code" value="{{ request()->query('postal_code') }}">
+                    <input type="hidden" name="postal_code" value="{{ request()->postal_code }}">
                 </div>
                 {{-- ID dell'ordine --}}
                 <div>
-                    <input type="hidden" name="order_id" value="{{ request()->query('order_id') }}">
+                    <input type="hidden" name="order_id" value="{{ request()->order_id }}">
                 </div>
                 {{-- Possessore della carta --}}
                 <label for="cardholder-name">Card holder</label>
@@ -99,7 +97,7 @@
                 {{-- Nonce --}}
                 <input id="nonce" name="payment_method_nonce" type="hidden" />
                 {{-- Submit --}}
-                <button class="button" type="submit"><span>Test Transaction</span></button>
+                <button class="button" type="submit"><span>Pay</span></button>
             </form>
         </div>
 
