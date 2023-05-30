@@ -114,7 +114,7 @@ class OrderController extends Controller
             }
             //$_SESSION["errors"] = $errorString;
             //header("Location: " . $baseUrl . "index.php");
-            return back()->withErrors('An error occurred with the message: ' . $result->message);
+            return back()->withErrors('Pagamento fallito (un po\' come te): ' . $result->message);
         }
     }
 
