@@ -49,6 +49,10 @@
             <h1>
                 Pagamento
             </h1>
+            {{-- Prezzo da pagare --}}
+            <h2>
+                Prezzo totale: {{ $total }}€
+            </h2>
             {{-- Form --}}
             <form action="{{ route('orders.store') }}" id="payment-form" method="post">
                 @csrf
