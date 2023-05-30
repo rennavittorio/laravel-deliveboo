@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Lead;
 use App\Mail\NewOrder; //ordine
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mails; //mail
+use Illuminate\Support\Facades\Mail; //mail
 
 class LeadController extends Controller
 {
