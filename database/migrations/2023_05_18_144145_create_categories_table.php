@@ -14,11 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('name', 255);
-
-            $table->timestamps();
+            $table->id(); //id
+            $table->string('img', 255); //immagine
+            $table->string('name', 255); //nome
+            $table->timestamps(); //data di creazione di modifica
         });
     }
 

@@ -33,16 +33,34 @@
     </h1>
 
     <div class="wrapper d-flex justify-content-center align-items-center gap-3">
-        <a class="nav-link" href="{{ route('dishes.index') }}">
-            <div class="card d-flex justify-content-center align-items-center text-center">
-                Visualizza i tuoi <span class="text-high"> piatti </span>
-            </div>
-        </a>
-        <a class="nav-link" href="{{ route('orders.index') }}">
-            <div class="card d-flex justify-content-center align-items-center text-center">
-                Visualizza i tuoi <span class="text-high"> ordini </span>
-            </div>
-        </a>
+        <div class="dish-wrapper">
+            <a class="nav-link" href="{{ route('dishes.index') }}">
+                <div class="card d-flex justify-content-center align-items-center text-center">
+                    Visualizza i tuoi <span class="text-high"> piatti </span>
+                </div>
+            </a>
+            <p>
+                Hai <span class="badge badge-sm bg-warning">{{ $total_dishes }}</span> piatti salvati
+            </p>
+            <p>
+                Di cui <span class="badge badge-sm bg-warning">{{ $total_dishes_visible }}</span> sono visibile ai clienti
+            </p>
+        </div>
+
+        <div class="order-wrapper">
+            <a class="nav-link" href="{{ route('orders.index') }}">
+                <div class="card d-flex justify-content-center align-items-center text-center">
+                    Visualizza i tuoi <span class="text-high"> ordini </span>
+                </div>
+            </a>
+            <p>
+                Hai <span class="badge badge-sm bg-warning">{{ $total_orders }}</span> ordini
+            </p>
+            <p>
+                Di cui <span class="badge badge-sm bg-warning">{{ $total_orders_paid }}</span> pagati
+            </p>
+
+        </div>
     </div>
 
     {{-- <ul class="list-group mt-3">

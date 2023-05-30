@@ -100,7 +100,7 @@ class DishSeeder extends Seeder
                 'restaurant_id' => 5
             ],
             [
-                'name' => 'Plin di carne e zucca al sugo d’arrosto e amaretto',
+                'name' => 'Plin di carne e zucca al sugo',
                 'img' => 'plin.jpg',
                 'description' => 'Plin di carne e zucca al sugo d’arrosto e amaretto',
                 'price' => 15,
