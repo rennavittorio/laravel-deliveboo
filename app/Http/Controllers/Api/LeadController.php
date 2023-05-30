@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lead;
+use App\Mail\NewOrder; //ordine
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mails; //mail
 
 class LeadController extends Controller
 {
@@ -36,7 +38,14 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all(); //prendo i dati dalla richiesta
+        $lead = Lead::create($data); //creo il lead
+        $mail = new NewOrder($lead); //creo la mail
+        Mail::to('pist.fracs95@gmail.com')->send($mail); //invio la mail
+        //Invio la risposta JSON
+        return response()->json([
+            'success' => true //successo
+        ]);
     }
 
     /**
