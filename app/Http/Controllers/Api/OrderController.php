@@ -12,15 +12,15 @@ class OrderController extends Controller
     public function store(Request $request)
     {
 
-        $amount = 0; //prezzo finale
+        $total = 0; //prezzo finale
 
         //Calcolo il prezzo finale
         foreach ($request->cart as $dish) {
-            $amount += $dish['price'] * $dish['quantity'];
+            $total += $dish['price'] * $dish['quantity'];
         }
 
         $newOrder = new Order(); //nuovo ordine
-        $newOrder->total = $amount; //prezzo finale dell'ordine
+        $newOrder->total = $total; //prezzo finale dell'ordine
         $newOrder->status = 0; //stato del pagamento
         $newOrder->first_name = $request->form['firstName']; //nome del cliente
         $newOrder->last_name = $request->form['lastName']; //cognome del cliente
@@ -29,7 +29,7 @@ class OrderController extends Controller
         $newOrder->address = $request->form['address']; //indirizzo del cliente
         $newOrder->postal_code = $request->form['postalCode']; //codice postale del cliente
         $newOrder->save(); //invio i dati dal database
-        
+
         //Inserisco i dati nella tabella ponte tra gli ordini e i piatti
         foreach ($request->cart as $dish) {
             //Inserimento nel database
@@ -39,10 +39,13 @@ class OrderController extends Controller
                 'quantity' => $dish['quantity'] //quantità del piatto ordinato
             ]);
         }
-
+        $results = [
+            'request' => $request->all(),
+            'order_id' => $newOrder->id
+        ];
         return response()->json([
             'success' => true,
-            'results' => $request->all()
+            'results' => $results
         ]);
     }
 }

@@ -64,27 +64,8 @@ class OrderController extends Controller
             'privateKey' => getenv('BT_PRIVATE_KEY')
         ]);
 
-        $amount = 0; //prezzo finale
-
-        //Piatti fake
-        $dishes = [
-            [
-                'id' => 1,
-                'price' => 5,
-                'quantity' => 2
-            ],
-            [
-                'id' => 2,
-                'price' => 7,
-                'quantity' => 2
-            ]
-        ];
-
-        //Calcolo il prezzo finale
-        foreach ($dishes as $dish) {
-            $amount += $dish['price'] * $dish['quantity'];
-        }
-
+        $order = Order::find($request->order_id); //ordine
+        $amount = $order->total; //prezzo finale
         
         $nonce = $request->payment_method_nonce; //nonce
         $firstName = $request->first_name; //nome
@@ -94,29 +75,9 @@ class OrderController extends Controller
         $address = $request->address; //indirizzo
         $postalCode = $request->postal_code; //codice postale
 
-        $newOrder = new Order(); //nuovo ordine
-        $newOrder->total = $amount; //prezzo totale dell'ordine
-        $newOrder->status = 0; //stato del pagamento dell'ordine
-        $newOrder->first_name = $firstName; //nome del cliente
-        $newOrder->last_name = $lastName; //cognome del cliente
-        $newOrder->email = $email; //email del cliente
-        $newOrder->phone = $phone; //telefono del cliente
-        $newOrder->address = $address; //indirizzo del cliente
-        $newOrder->postal_code = $postalCode; //codice postale del cliente
-        $newOrder->save(); //salvo i dati nel database
-
-        //Inserisco i dati nella tabella ponte tra gli ordini e i piatti
-        foreach ($dishes as $dish) {
-            //Inserimento nel database
-            DB::table('dish_order')->insert([
-                'dish_id' => $dish['id'], //id del piatto
-                'order_id' => $newOrder->id, //id dell'ordine
-                'quantity' => $dish['quantity'] //quantità del piatto ordinato
-            ]);
-        }
         //Transazione
         $result = $gateway->transaction()->sale([
-            'amount' => $amount, //quantità
+            'amount' => $amount, //prezzo finale
             'paymentMethodNonce' => $nonce,//nonce
             //Cliente
             'customer' => [
@@ -139,8 +100,8 @@ class OrderController extends Controller
         //Se la transazione avviene con successo
         if ($result->success) {
             $transaction = $result->transaction;
-            $newOrder->status = 1; //cambio la stato dell'ordine in successo
-            $newOrder->save(); //invio le informazio al database
+            $order->status = 1; //cambio la stato dell'ordine in successo
+            $order->save(); //invio le informazio al database
             //header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
             return back()->with('success_message', 'Transaction successful. The ID is: ' . $transaction->id);
         } else { //altrimenti

@@ -53,34 +53,32 @@
             <form action="{{ route('orders.store') }}" id="payment-form" method="post">
                 @csrf
                 {{-- Nome --}}
-                <label for="first_name">Nome</label>
                 <div>
-                    <input type="text" name="first_name">
+                    <input type="hidden" name="first_name" value="{{ request()->query('firstName') }}">
                 </div>
                 {{-- Cognome --}}
-                <label for="last_name">Cognome</label>
                 <div>
-                    <input type="text" name="last_name">
+                    <input type="hidden" name="last_name" value="{{ request()->query('lastName') }}">
                 </div>
                 {{-- Email --}}
-                <label for="email">Email</label>
                 <div>
-                    <input type="email" name="email">
+                    <input type="hidden" name="email" value="{{ request()->query('email') }}">
                 </div>
                 {{-- Telefono --}}
-                <label for="phone">Telefono</label>
                 <div>
-                    <input type="text" name="phone">
+                    <input type="hidden" name="phone" value="{{ request()->query('phone') }}">
                 </div>
                 {{-- Email --}}
-                <label for="address">Indirizzo</label>
                 <div>
-                    <input type="text" name="address">
+                    <input type="hidden" name="address" value="{{ request()->query('address') }}">
                 </div>
                 {{-- Codice postale --}}
-                <label for="postal_code">Codice postale</label>
                 <div>
-                    <input type="text" name="postal_code">
+                    <input type="hidden" name="postal_code" value="{{ request()->query('postal_code') }}">
+                </div>
+                {{-- ID dell'ordine --}}
+                <div>
+                    <input type="hidden" name="order_id" value="{{ request()->query('order_id') }}">
                 </div>
                 {{-- Possessore della carta --}}
                 <label for="cardholder-name">Card holder</label>
