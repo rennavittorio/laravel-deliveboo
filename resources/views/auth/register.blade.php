@@ -28,7 +28,7 @@
                                 maxlength="255"
                                 >
 
-                                <span id="register-name-error" class="message-error text-danger ps-2"></span>
+                                <span id="register-name-error" class="message-error text-danger"></span>
     
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                                 maxlength="255"
                                 >
 
-                                <span id="register-email-error" class="message-error text-danger ps-2"></span>
+                                <span id="register-email-error" class="message-error text-danger"></span>
         
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
                                 maxlength="255" minlength="8"
                                 >
 
-                                <span id="register-psw-error" class="message-error text-danger ps-2"></span>
+                                <span id="register-psw-error" class="message-error text-danger"></span>
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -85,7 +85,7 @@
                                 maxlength="255" minlength="8"
                                 >
 
-                                <span id="register-psw-confirm-error" class="message-error text-danger ps-2"></span>
+                                <span id="register-psw-confirm-error" class="message-error text-danger"></span>
 
                             </div>
 
@@ -104,7 +104,7 @@
                                 maxlength="100"
                                 >
 
-                                <span id="register-name-restaurant-error" class="message-error text-danger ps-2"></span>
+                                <span id="register-name-restaurant-error" class="message-error text-danger"></span>
     
                                 @error('restaurant_name')
                                 <span class="invalid-feedback" role="alert">
@@ -119,7 +119,7 @@
                                 <label for="img" class="form-label required-input">Immagine</label>
                                 <input type="file" class="form-control" id="url" name="img" value="">
 
-                                <span id="register-img-error" class="message-error text-danger ps-2"></span>
+                                <span id="register-img-error" class="message-error text-danger"></span>
 
                                 @error('img')
                                     <div class="text-danger">{{ $message }}</div>
@@ -158,7 +158,7 @@
                                 maxlength="255"
                                 >
 
-                                <span id="register-address-error" class="message-error text-danger ps-2"></span>
+                                <span id="register-address-error" class="message-error text-danger"></span>
     
                                 @error('address')
                                 <span class="invalid-feedback" role="alert">
@@ -175,7 +175,7 @@
                                 maxlength="13" minlength="13"
                                 >
 
-                                <span id="register-vat-error" class="message-error text-danger ps-2"></span>
+                                <span id="register-vat-error" class="message-error text-danger"></span>
         
                                 @error('vat')
                                 <span class="invalid-feedback" role="alert">
@@ -247,7 +247,7 @@ document.getElementById("name").addEventListener("blur", ()=>{
         nameCheck = false;
         btnSub = document.getElementById('btn-sub');
         btnSub.disabled = true;
-        registerNameError.textContent = 'Inserisci il nome...';
+        registerNameError.textContent = 'Inserisci il nome, campo obbligatorio!';
     } else {
         name.className = ('form-control border border-success');
         nameCheck = true;

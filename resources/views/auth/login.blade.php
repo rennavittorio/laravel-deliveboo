@@ -17,7 +17,7 @@
                             <div class="col-md-6">
                                 <input id="login-email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                <span id="login-email-error" class="message-error text-danger ps-2"></span>
+                                <span id="login-email-error" class="message-error text-danger"></span>
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                             <div class="col-md-6">
                                 <input id="login-password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
-                                <span id="login-psw-error" class="message-error text-danger ps-2"></span>
+                                <span id="login-psw-error" class="message-error text-danger"></span>
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -101,7 +101,7 @@ document.getElementById("login-email").addEventListener("blur", ()=>{
         loginMailCheck = false;
         btnSubLogin = document.getElementById('btn-sub-login');
         btnSubLogin.disabled = true;
-        loginMailError.textContent = 'Inserisci la mail...';
+        loginMailError.textContent = 'Ops! Il campo email non può essere vuoto';
         
     } else {
         loginMail.className = ('form-control border border-success');
@@ -124,7 +124,7 @@ document.getElementById("login-password").addEventListener("blur", ()=>{
         loginPswCheck = false;
         btnSubLogin = document.getElementById('btn-sub-login');
         btnSubLogin.disabled = true;
-        loginPswError.textContent = 'Inserisci la password...';
+        loginPswError.textContent = 'Ops! Il campo password non può essere vuoto';
     }
 
     if(loginPsw.value.length >= 1 && loginPsw.value.length < 8){
@@ -132,7 +132,7 @@ document.getElementById("login-password").addEventListener("blur", ()=>{
         loginPswCheck = false;
         btnSubLogin = document.getElementById('btn-sub-login');
         btnSubLogin.disabled = true;
-        loginPswError.textContent = 'Deve includere almeno 8 caratteri';
+        loginPswError.textContent = 'Oops! La password deve essere lunga almeno 8 caratteri.';
     } 
 
     if(loginPsw.value.length >= 8){
