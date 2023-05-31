@@ -17,6 +17,8 @@
                             <div class="col-md-6">
                                 <input id="login-email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
+                                <span id="login-email-error" class="message-error text-danger ps-2"></span>
+
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -30,6 +32,8 @@
 
                             <div class="col-md-6">
                                 <input id="login-password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                <span id="login-psw-error" class="message-error text-danger ps-2"></span>
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -90,14 +94,19 @@ if(btnSubLogin !== null){
 //check mail
 document.getElementById("login-email").addEventListener("blur", ()=>{
     loginMail = document.getElementById('login-email');
+    let loginMailError = document.getElementById('login-email-error');
+    
     if(loginMail.value.length === 0){
         loginMail.className = ('form-control border border-danger');
         loginMailCheck = false;
         btnSubLogin = document.getElementById('btn-sub-login');
         btnSubLogin.disabled = true;
+        loginMailError.textContent = 'Inserisci la mail...';
+        
     } else {
         loginMail.className = ('form-control border border-success');
         loginMailCheck = true;
+        loginMailError.textContent = '';
         if(loginMailCheck && loginPswCheck){
             btnSubLogin = document.getElementById('btn-sub-login');
             btnSubLogin.disabled = false;
@@ -108,12 +117,14 @@ document.getElementById("login-email").addEventListener("blur", ()=>{
 //check psw && pswConf inputs
 document.getElementById("login-password").addEventListener("blur", ()=>{
     loginPsw = document.getElementById('login-password');
+    let loginPswError = document.getElementById('login-psw-error');
     console.log(loginPsw.value.length)
     if(loginPsw.value.length === 0){
         loginPsw.className = ('form-control border border-danger');
         loginPswCheck = false;
         btnSubLogin = document.getElementById('btn-sub-login');
         btnSubLogin.disabled = true;
+        loginPswError.textContent = 'Inserisci la password...';
     }
 
     if(loginPsw.value.length >= 1 && loginPsw.value.length < 8){
@@ -121,6 +132,7 @@ document.getElementById("login-password").addEventListener("blur", ()=>{
         loginPswCheck = false;
         btnSubLogin = document.getElementById('btn-sub-login');
         btnSubLogin.disabled = true;
+        loginPswError.textContent = 'Deve includere almeno 8 caratteri';
     } 
 
     if(loginPsw.value.length >= 8){
@@ -128,6 +140,7 @@ document.getElementById("login-password").addEventListener("blur", ()=>{
         loginPswCheck = true;
         btnSubLogin = document.getElementById('btn-sub-login');
         btnSubLogin.disabled = false;
+        loginPswError.textContent = '';
     }
 })
 </script>
