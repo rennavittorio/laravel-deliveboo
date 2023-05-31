@@ -7,6 +7,7 @@ use App\Models\Restaurant; //ristorante
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use Illuminate\Support\Facades\Auth; //auth
+use Illuminate\Support\Facades\DB; //DB
 
 class OrderController extends Controller
 {
@@ -36,7 +37,17 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        //Gateway
+        $gateway = new \Braintree\Gateway([
+            'environment' => getenv('BT_ENVIRONMENT'),
+            'merchantId' => getenv('BT_MERCHANT_ID'),
+            'publicKey' => getenv('BT_PUBLIC_KEY'),
+            'privateKey' => getenv('BT_PRIVATE_KEY')
+        ]);
+        $token = $gateway->ClientToken()->generate(); //token
+        // $order = Order::find(request()->query('order_id')); //cerco l'ordine
+        // $total = $order->total; //prendo il prezzo del'ordine
+        return view('orders.create', compact('token')); //restituisco la vista create
     }
 
     /**
@@ -46,8 +57,65 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreOrderRequest $request)
-    {
-        //
+    {   
+        //Gateway
+        $gateway = new \Braintree\Gateway([
+            'environment' => getenv('BT_ENVIRONMENT'),
+            'merchantId' => getenv('BT_MERCHANT_ID'),
+            'publicKey' => getenv('BT_PUBLIC_KEY'),
+            'privateKey' => getenv('BT_PRIVATE_KEY')
+        ]);
+
+        $order = Order::find($request->order_id); //ordine
+        $amount = $order->total; //prezzo finale
+        
+        $nonce = $request->payment_method_nonce; //nonce
+        $firstName = $request->first_name; //nome
+        $lastName = $request->last_name; //cognome
+        $email = $request->email; //email
+        $phone = $request->phone; //telefono
+        $address = $request->address; //indirizzo
+        $postalCode = $request->postal_code; //codice postale
+
+        //Transazione
+        $result = $gateway->transaction()->sale([
+            'amount' => $amount, //prezzo finale
+            'paymentMethodNonce' => $nonce,//nonce
+            //Cliente
+            'customer' => [
+                'firstName' => $firstName, //nome
+                'lastName' => $lastName, //cognome
+                'email' => $email, //email
+                'phone' => $phone, //telefono
+            ],
+            //Addebito
+            'billing' => [
+                'firstName' => $firstName, //nome
+                'lastName' => $lastName, //cognome
+                'streetAddress' => $address, //indirizzo
+                'postalCode' => $postalCode, //codice postale
+            ],
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+        //Se la transazione avviene con successo
+        if ($result->success) {
+            $transaction = $result->transaction;
+            $order->status = 1; //cambio la stato dell'ordine in successo
+            $order->save(); //invio le informazio al database
+            //header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
+            // return back()->with('success_message', 'Transaction successful. The ID is: ' . $transaction->id);
+            return redirect('http://localhost:5174');
+        } else { //altrimenti
+            $errorString = "";
+            foreach($result->errors->deepAll() as $error) {
+                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            }
+            //$_SESSION["errors"] = $errorString;
+            //header("Location: " . $baseUrl . "index.php");
+            return back()->withErrors('Pagamento fallito (un po\' come te): ' . $result->message);
+        }
     }
 
     /**
