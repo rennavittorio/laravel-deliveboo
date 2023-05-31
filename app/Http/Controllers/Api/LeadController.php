@@ -41,7 +41,7 @@ class LeadController extends Controller
         $data = $request->all(); //prendo i dati dalla richiesta
         $lead = Lead::create($data); //creo il lead
         $mail = new NewOrder($lead); //creo la mail
-        Mail::to('pist.fracs95@gmail.com')->send($mail); //invio la mail
+        Mail::to($data['email'])->send($mail); //invio la mail
         //Invio la risposta JSON
         return response()->json([
             'success' => true //successo

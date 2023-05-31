@@ -3,5 +3,5 @@
 </h1>
 
 <p>
-    Contenuto del messaggio
+    {{ $lead->message }}
 </p>
