@@ -269,7 +269,7 @@ document.getElementById("email").addEventListener("blur", ()=>{
         mailCheck = false;
         btnSub = document.getElementById('btn-sub');
         btnSub.disabled = true;
-        registerEmailError.textContent = 'Inserisci la mail...'
+        registerEmailError.textContent = 'Inserisci la mail, campo obbligatorio!'
     } else {
         mail.className = ('form-control border border-success');
         mailCheck = true;
@@ -289,7 +289,7 @@ document.getElementById("password").addEventListener("blur", ()=>{
     console.log(psw.value.length)
     if(psw.value.length === 0){
         psw.className = ('form-control border border-danger');
-        registerPswError.textContent = 'Inserisci la password...';
+        registerPswError.textContent = 'Inserisci la password, campo obbligatorio!';
     }
 
     if(psw.value.length >= 1 && psw.value.length < 8){
@@ -311,7 +311,7 @@ document.getElementById("password-confirm").addEventListener("blur", ()=>{
         pswCheck = false;
         btnSub = document.getElementById('btn-sub');
         btnSub.disabled = true;
-        registerPswConfirmError.textContent = 'Inserisci la conferma password...';
+        registerPswConfirmError.textContent = 'Inserisci la conferma della password, campo obbligatorio!';
     }
 
     if(pswConf.value.length >= 1 && pswConf.value.length < 8){
@@ -327,7 +327,7 @@ document.getElementById("password-confirm").addEventListener("blur", ()=>{
             psw.className = ('form-control border border-danger');
             pswConf.className = ('form-control border border-danger');
             pswCheck = false;
-            registerPswConfirmError.textContent = 'La password non corrisponde';
+            registerPswConfirmError.textContent = 'La password non corrisponde. Riprova!';
             //alert('wrong psw confirm')
         } else {
             psw.className = ('form-control border border-success');
@@ -353,7 +353,7 @@ document.getElementById("restaurant_name").addEventListener("blur", ()=>{
         restNameCheck = false;
         btnSub = document.getElementById('btn-sub');
         btnSub.disabled = true;
-        registerNamerestaurantError.textContent = 'Inserisci il nome del ristorante...';
+        registerNamerestaurantError.textContent = 'Inserisci il nome, campo obbligatorio!';
     } else {
         restName.className = ('form-control border border-success');
         restNameCheck = true;
@@ -374,7 +374,7 @@ document.getElementById("url").addEventListener("blur", ()=>{
         restImgCheck = false;
         btnSub = document.getElementById('btn-sub');
         btnSub.disabled = true;
-        registerImgError.textContent = 'Inserisci l\'immagine...';
+        registerImgError.textContent = 'Inserisci l\'immagine, campo obbligatorio!';
     } else {
         restImg.className = ('form-control border border-success');
         restImgCheck = true;
@@ -411,7 +411,7 @@ document.getElementById("address").addEventListener("blur", ()=>{
         restAddressCheck = false;
         btnSub = document.getElementById('btn-sub');
         btnSub.disabled = true;
-        registerAddressError.textContent = 'Inserisci l\'indirizzo...';
+        registerAddressError.textContent = 'Inserisci l\'indirizzo, campo obbligatorio!';
     } else {
         restAddress.className = ('form-control border border-success');
         restAddressCheck = true;
@@ -432,7 +432,7 @@ document.getElementById("vat").addEventListener("blur", ()=>{
         restVatCheck = false;
         btnSub = document.getElementById('btn-sub');
         btnSub.disabled = true;
-        registerVatError.textContent = 'Inserisci la Partita Iva...';
+        registerVatError.textContent = 'Inserisci la Partita Iva, campo obbligatorio!';
     } else if(restVat.value.length < 13) {
         restVat.className = ('form-control border border-warning');
         restVatCheck = false;
