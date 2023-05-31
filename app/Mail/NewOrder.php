@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Symfony\Component\Mime\Email; //email
 
 class NewOrder extends Mailable
 {
@@ -35,6 +36,11 @@ class NewOrder extends Mailable
         return new Envelope(
             replyTo: $this->lead->email,
             subject: 'Nuovo ordine',
+            using: [
+                function (Email $email) {
+                    $this->lead->message = json_decode($this->lead->message, true);
+                }
+            ]
         );
     }
 
