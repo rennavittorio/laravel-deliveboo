@@ -47,7 +47,7 @@
 
                 </div>
                 <a class="btn btn-warning my-2" href="{{ route('dishes.edit', $dish->id) }}">
-                    Edit
+                    Modifica
                 </a>
             </div>
         </div>
