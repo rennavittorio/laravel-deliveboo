@@ -43,9 +43,9 @@
         </main>
     </div>
     <script>
-        /*setTimeout(() => {
+        setTimeout(() => {
             window.location.replace("http://localhost:5174");
-        }, 3000);*/
+        }, 3000);
     </script>
 </body>
 </html>
