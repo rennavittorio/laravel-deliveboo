@@ -62,7 +62,7 @@
                             <a class="nav-link" href="{{ route('orders.index') }}">Ordini</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://localhost:5174/">Torna al sito</a>
+                            <a class="nav-link" href="{{'http://localhost:5174/restaurant/'. Auth::user()->restaurant->slug }}">Torna al sito</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
