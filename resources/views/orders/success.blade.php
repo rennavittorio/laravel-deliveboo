@@ -20,6 +20,9 @@
         img {
             width: 300px;
         }
+        .text-purple {
+            color: #7B2CBF;
+        }
     </style>
 </head>
 <body>
@@ -33,16 +36,16 @@
                 <p>
                     A breve verrai reindirizzato alla home
                 </p>
-                <div class="spinner-border text-primary" role="status">
+                <div class="spinner-border text-purple" role="status">
                     <span class="visually-hidden">Loading...</span>
                   </div>
             </div>
         </main>
     </div>
     <script>
-        setTimeout(() => {
+        /*setTimeout(() => {
             window.location.replace("http://localhost:5174");
-        }, 3000);
+        }, 3000);*/
     </script>
 </body>
 </html>
