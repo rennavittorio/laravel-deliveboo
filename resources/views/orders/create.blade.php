@@ -4,13 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>DelivePay</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        @vite(['resources/js/app.js'])
 
         <style>
-            body {
+            .body {
                 font-family: 'Nunito', sans-serif;
                 background-color: #FF9100;
             }
@@ -19,6 +20,7 @@
                 max-width: 800px;
                 margin: 0px auto
             }
+
             /* Campi di Braintree */
             #card-number, #cvv, #expiration-date, #cardholder-name {
                 height: 40px;
@@ -28,7 +30,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased body">
         {{-- Container --}}
         <div class="container">
             {{-- Messaggio di successo --}}
@@ -48,7 +50,7 @@
                 </div>
             @endif
             {{-- Titolo --}}
-            <h1>
+            <h1 class="mt-5 fw-bold">
                 Pagamento
             </h1>
             {{-- Form --}}
@@ -84,20 +86,20 @@
                 </div>
                 {{-- Possessore della carta --}}
                 <label for="cardholder-name">Card holder</label>
-                <div id="cardholder-name"></div>    
+                <div id="cardholder-name" class="form-control mb-3"></div>    
                 {{-- Numero della carta --}}
                 <label for="card-number">Card Number</label>
-                <div id="card-number"></div>
+                <div id="card-number" class="form-control mb-3"></div>
                 {{-- CVV --}}
                 <label for="cvv">CVV</label>
-                <div id="cvv"></div>
+                <div id="cvv" class="form-control mb-3"></div>
                 {{-- Data di scadenza --}}
                 <label for="expiration-date">Expiration Date</label>
-                <div id="expiration-date"></div>
+                <div id="expiration-date" class="form-control mb-3"></div>
                 {{-- Nonce --}}
                 <input id="nonce" name="payment_method_nonce" type="hidden" />
                 {{-- Submit --}}
-                <button class="button" type="submit"><span>Pay</span></button>
+                <button class="button btn btn-primary mt-3" type="submit"><span>Paga</span></button>
             </form>
         </div>
 

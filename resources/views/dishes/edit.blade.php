@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-6 d-flex flex-column align-items-center">
                         <label for="img" class="form-label fw-lighter fst-italic">" Immagine Precedente "</label>
-                        <img src="{{ asset('storage/'. $dish->img) }}" class="max" alt="">
+                        <img src="{{ asset('storage/'. $dish->img) }}" class="max" alt=""style="max-width: 250px">
                     </div>
                 </div>
             </div>
