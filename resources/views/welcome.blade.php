@@ -61,11 +61,11 @@
                 @endif
                 <a class="nav-link" href="{{ route('orders.index') }}">Vai ai tuoi ordini</a>
             </div>
+            {{-- Statistiche --}}
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
-    </div>
-    {{-- Statistiche --}}
-    <div>
-        <canvas id="myChart"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -73,10 +73,10 @@
         new Chart(ctx, {
             type: 'bar',
             data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Totale vendite mensili',
+                data: [2000, 1500, 2300, 2100, 2050, 3000, 1600, 2000, 5000, 4500, 3800, 4000],
                 borderWidth: 1
             }]
             },
