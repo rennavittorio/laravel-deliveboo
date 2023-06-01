@@ -103,10 +103,10 @@ class OrderController extends Controller
         if ($result->success) {
             $transaction = $result->transaction;
             $order->status = 1; //cambio la stato dell'ordine in successo
-            $order->save(); //invio le informazio al database
+            $order->save(); //invio le informazionu al database
             //header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
             // return back()->with('success_message', 'Transaction successful. The ID is: ' . $transaction->id);
-            return redirect('http://localhost:5174');
+            return view('orders.success'); //restituisco la pagina di pagamento con successo 
         } else { //altrimenti
             $errorString = "";
             foreach($result->errors->deepAll() as $error) {
