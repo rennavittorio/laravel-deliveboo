@@ -2,7 +2,7 @@
 @section('content')
 
 
-<div class="welcome container p-5">
+<div class="welcome container p-sm-1 p-md-5">
 
     
     @guest
@@ -33,7 +33,7 @@
     </h1>
 
     <div class="wrapper d-flex flex-column justify-content-center align-items-center gap-3">
-        <div class="dish-wrapper col-6">
+        <div class="dish-wrapper col-md-9 col-sm-12">
             <div class="card p-3">
                 @if($total_dishes_visible < $total_dishes)
                 <p>
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="order-wrapper col-6">
+        <div class="order-wrapper col-md-9 col-sm-12">
             <div class="card p-3">
                 @if($total_orders_paid < $total_orders)
                 <p>
