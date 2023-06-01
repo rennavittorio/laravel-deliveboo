@@ -38,8 +38,11 @@ Route::get('/', function () {
             ->join('restaurants', 'restaurants.id', '=', 'dishes.restaurant_id')
             ->where('dishes.restaurant_id', '=', $restaurant->id)->where('status', 1)
             ->distinct()
-            ->count('orders.id'); //prendo gli ordini collegati al ristorante dell'utente   
-        return view('welcome', compact('restaurant', 'total_dishes', 'total_dishes_visible', 'total_orders', 'total_orders_paid')); //li mando a 'welcome'
+            ->count('orders.id'); //prendo gli ordini collegati al ristorante dell'utente  
+
+        $total_dishes_not_visible = $total_dishes - $total_dishes_visible;
+        $total_orders_not_paid = $total_orders - $total_orders_paid;
+        return view('welcome', compact('restaurant', 'total_dishes', 'total_dishes_visible', 'total_dishes_not_visible', 'total_orders', 'total_orders_paid', 'total_orders_not_paid')); //li mando a 'welcome'
     }
 
     return redirect('http://localhost:5174/'); //redirect to frontend
