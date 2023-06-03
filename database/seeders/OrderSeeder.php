@@ -39,6 +39,138 @@ class OrderSeeder extends Seeder
             [
                 'dishes' => [
                     [
+                        'id' => 1,
+                        'quantity' => 3
+                    ],
+                    [
+                        'id' => 2,
+                        'quantity' => 2
+                    ]
+                ],
+                'total' => 29.00,
+                'status' => 1,
+                'first_name' => 'Giuseppe',
+                'last_name' => 'Funicello',
+                'email' => 'giuseppe@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Via Montebello, 20, Torino TO',
+                'postal_code' => '10124'
+            ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 1,
+                        'quantity' => 1
+                    ],
+                    [
+                        'id' => 2,
+                        'quantity' => 1
+                    ]
+                ],
+                'total' => 12.00,
+                'status' => 1,
+                'first_name' => 'Luigi',
+                'last_name' => 'Micco',
+                'email' => 'luigi@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Piazza Carducci, 169/173, Torino TO',
+                'postal_code' => '10126'
+            ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 1,
+                        'quantity' => 8
+                    ],
+                    [
+                        'id' => 2,
+                        'quantity' => 8
+                    ]
+                ],
+                'total' => 96.00,
+                'status' => 1,
+                'first_name' => 'Gianluca',
+                'last_name' => 'Lomarco',
+                'email' => 'gianluca@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Piazza Carducci, 169/173, Torino TO',
+                'postal_code' => '10126'
+            ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 1,
+                        'quantity' => 5
+                    ],
+                ],
+                'total' => 20.00,
+                'status' => 1,
+                'first_name' => 'Riccardo',
+                'last_name' => 'Scrizzi',
+                'email' => 'riccardo@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Corso Giambattista Beccaria, 4, Torino TO',
+                'postal_code' => '10124'
+            ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 1,
+                        'quantity' => 2
+                    ],
+                    [
+                        'id' => 2,
+                        'quantity' => 1
+                    ]
+                ],
+                'total' => 17.00,
+                'status' => 1,
+                'first_name' => 'Emanuele',
+                'last_name' => 'Paratore',
+                'email' => 'emanuele@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Piazza Gran Madre di Dio, 4, Torino TO',
+                'postal_code' => '10131'
+            ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 1,
+                        'quantity' => 5
+                    ],
+                    [
+                        'id' => 2,
+                        'quantity' => 5
+                    ]
+                ],
+                'total' => 60.00,
+                'status' => 1,
+                'first_name' => 'Leica',
+                'last_name' => 'Florian',
+                'email' => 'leica@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Corso Novara, 135, Torino TO',
+                'postal_code' => '10153'
+            ],
+            [
+                'dishes' => [
+                    [
+                        'id' => 1,
+                        'quantity' => 10
+                    ]
+                ],
+                'total' => 50.00,
+                'status' => 1,
+                'first_name' => 'Valentina',
+                'last_name' => 'Ferrari',
+                'email' => 'valentina@gmail.com',
+                'phone' => $faker->randomNumber(9, true),
+                'address' => 'Via Bologna, 32, Torino TO',
+                'postal_code' => '10152'
+            ],
+            [
+                'dishes' => [
+                    [
                         'id' => 3,
                         'quantity' => 1
                     ]

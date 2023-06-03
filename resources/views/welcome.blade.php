@@ -47,7 +47,6 @@
                 <a class="nav-link" href="{{ route('dishes.index') }}">Vai ai tuoi piatti</a>
             </div>
         </div>
-
         <div class="order-wrapper col-md-9 col-sm-12">
             <div class="card p-3">
                 @if($total_orders_paid < $total_orders)
@@ -62,8 +61,35 @@
                 <a class="nav-link" href="{{ route('orders.index') }}">Vai ai tuoi ordini</a>
             </div>
         </div>
+        <div class="order-wrapper col-md-9 col-sm-12">
+            {{-- Statistiche --}}
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
+            datasets: [{
+                label: 'Incasso mensile (€)',
+                data: [{{ $sum[0] }}, {{ $sum[1] }}, {{ $sum[2] }}, {{ $sum[3] }}, {{ $sum[4] }}, {{ $sum[5] }}, {{ $sum[6] }}, {{ $sum[7] }}, {{ $sum[8] }}, {{ $sum[9] }}, {{ $sum[10] }}, {{ $sum[11] }}],
+                borderWidth: 1
+            }]
+            },
+            options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+            }
+        });
+    </script>
     {{-- <ul class="list-group mt-3">
         <li class="list-group-item"><a href="{{ route('dishes.index') }}">Visualizza i tuoi piatti</a></li>
         <li class="list-group-item"><a href="">Visualizza i tuoi ordini</a></li>
