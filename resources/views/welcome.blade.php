@@ -47,7 +47,6 @@
                 <a class="nav-link" href="{{ route('dishes.index') }}">Vai ai tuoi piatti</a>
             </div>
         </div>
-
         <div class="order-wrapper col-md-9 col-sm-12">
             <div class="card p-3">
                 @if($total_orders_paid < $total_orders)
@@ -61,6 +60,8 @@
                 @endif
                 <a class="nav-link" href="{{ route('orders.index') }}">Vai ai tuoi ordini</a>
             </div>
+        </div>
+        <div class="order-wrapper col-md-9 col-sm-12">
             {{-- Statistiche --}}
             <div>
                 <canvas id="myChart"></canvas>
@@ -75,8 +76,8 @@
             data: {
             labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
             datasets: [{
-                label: 'Totale vendite mensili',
-                data: [2000, 1500, 2300, 2100, 2050, 3000, 1600, 2000, 5000, 4500, 3800, 4000],
+                label: 'Incasso mensile (€)',
+                data: [{{ $sum[0] }}, {{ $sum[1] }}, {{ $sum[2] }}, {{ $sum[3] }}, {{ $sum[4] }}, {{ $sum[5] }}, {{ $sum[6] }}, {{ $sum[7] }}, {{ $sum[8] }}, {{ $sum[9] }}, {{ $sum[10] }}, {{ $sum[11] }}],
                 borderWidth: 1
             }]
             },

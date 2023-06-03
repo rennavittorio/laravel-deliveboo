@@ -42,10 +42,30 @@ Route::get('/', function () {
             ->where('dishes.restaurant_id', '=', $restaurant->id)->where('status', 1)
             ->distinct()
             ->count('orders.id'); //prendo gli ordini collegati al ristorante dell'utente  
-
+        $sales = []; //vendite
+        //Ciclo
+        for ($i = 0; $i < 12; $i++) {
+            $sales[$i] = Order::join('dish_order', 'orders.id', '=', 'dish_order.order_id')
+                        ->join('dishes', 'dishes.id', '=', 'dish_order.dish_id')
+                        ->join('restaurants', 'restaurants.id', '=', 'dishes.restaurant_id')
+                        ->where('dishes.restaurant_id', '=', $restaurant->id)
+                        ->whereMonth('orders.created_at', '=', $i + 1)
+                        ->where('orders.status', '=', 1)
+                        ->groupBy('orders.id')
+                        ->get('orders.total'); //prendo il totale degli ordini per mese
+        }
+        $sum = []; //somma delle vendite
+        //Ciclo 
+        for ($i = 0; $i < 12; $i++) {
+            $sum[$i] = 0; //inizializzo la somma
+            //Ciclo
+            foreach ($sales[$i] as $order) {
+                $sum[$i] += $order->total; //somma il totale degli ordini per mese
+            }
+        }
         $total_dishes_not_visible = $total_dishes - $total_dishes_visible;
         $total_orders_not_paid = $total_orders - $total_orders_paid;
-        return view('welcome', compact('restaurant', 'total_dishes', 'total_dishes_visible', 'total_dishes_not_visible', 'total_orders', 'total_orders_paid', 'total_orders_not_paid')); //li mando a 'welcome'
+        return view('welcome', compact('restaurant', 'total_dishes', 'total_dishes_visible', 'total_dishes_not_visible', 'total_orders', 'total_orders_paid', 'total_orders_not_paid', 'sum', 'sales')); //li mando a 'welcome'
     }
 
     return redirect('http://localhost:5174/'); //redirect to frontend
