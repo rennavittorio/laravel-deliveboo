@@ -38,7 +38,7 @@
                 {{-- Codice postale --}}
                 <td>{{ $order->postal_code }}</td>
                 {{-- Orario --}}
-                <td>{{ $order->created_at }}</td>
+                <td>{{ date_format($order->created_at,"d/m/Y H:i:s") }}</td>
                 {{-- Se l'ordine non è stato pagato --}}
                 @if ($order->status === 0)
                     {{-- Stato del pagamento --}}
